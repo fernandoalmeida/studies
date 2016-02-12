@@ -1,0 +1,14 @@
+* Week 0 - Welcome to Algorithms, Part 1
+
+** Commented books
+  - Algorithms + Data Structures = Programs
+    Niklaus Wirth
+
+  - Donald Knuth books
+    http://www-cs-faculty.stanford.edu/~uno/books.html
+
+  - Algorithms (text book of the course)
+    http://algs4.cs.princeton.edu/home/
+
+  - Introduction to Programming in Java (recommended)
+    http://introcs.cs.princeton.edu/java/home/
