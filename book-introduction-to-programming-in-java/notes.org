@@ -1,0 +1,80 @@
+* Chapter 4 - Algorithms and Data Structures
+
+** Analysis of Algorithms
+
+   To study the cost of running programs we use a *scientific method* (techniques
+     commonly accepted, universally used to develop knowledge about natural
+     world):
+
+     - *Observe* some features of the natural world;
+     - *Hypothesize* a model that is consistent with the observations;
+     - *Predict* events using the hypothesis;
+     - *Verify* the predictions by making further observations;
+     - *Validate* by repeating until the hypothesis and observations agree.
+
+   The *experiment* that we design must be *reproducible* and *falsifiable*.
+
+   We need to make *quantitative measurements* of the running time of the
+   programs, normally *related to input size or input value*, usually we are
+   satisfied with *approximate estimates*.
+
+   The *mathematical analysis* is determined by two primary factors:
+
+     - The *cost* of executing each statement;
+     - The *frequency* of execution of each statement.
+
+   We use *tilde notation* to develop approximate expression.
+   *~ f(N)* represents any quantity that divided by f(N) approaches 1 as N grows.
+   *g(N) ~ f(N)* indicates that g(N) / f(N) approaches 1 as N grows.
+
+   For a great many programs the running time satisfies the relationship T(N) ~
+   c f(N) where c is a constant and f(N) a function known as *order of growth*,
+   commonly f(N) is a function such as:
+
+     *1* = *constant*
+       does not depend on the input size;
+     *log N* = *logarithmic*
+       slightly slower as N grows;
+       whenever N double, the running time increases by a constant;
+     *N* = *linear*
+       optimal if you need process N inputs;
+       whenever N double, then so does the running time.
+     *N log N* = *linearithmic*
+       scales to huge problems;
+       whenever N double, the running time is a little more than doubles;
+     *N^2* = *quadratic*
+       practical for use only on relatively small problems;
+       whenever N doubles, the running time increases fourfold;
+     *N^3* = *cubic*
+       practical for use only on small problems;
+       whenever N doubles, the running time increases eightfold;
+     *2^N* = *exponential*
+       is not usually appropriate for practical use;
+       whenever N doubles, the running time squares;
+     *N!* = *factorial*
+       worse than exponential;
+       Whenever N increases by 1, the running time increases by a factor of N;
+
+   We need also to measure the memory usage. For primitive types is not
+   difficult to estimate memory consumption, we can count the number of
+   variables and weight them by number of bytes according to their type:
+
+     boolean = 1
+     char = 2
+     int / float = 4
+     long / double = 8
+
+     object reference = 4
+
+     char[] = 16 + 2N
+     string = 40 + 2N
+
+     int[] = 16 + 4N
+     int[][] = ~ 4N^2
+     double[][] = ~ 8N^2
+
+   To determine the memory usage of an object, we add the amount of memory used
+   by each instance variable to the overhead associated with each object,
+   typically 8 bytes.
+
+   An impossibly slow program is almost as useless as an incorrect one.
