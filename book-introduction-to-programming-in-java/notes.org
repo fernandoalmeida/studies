@@ -109,3 +109,48 @@
        - computer-assisted music analysis
        - cryptography
        - data compression
+
+** Stacks and Queues
+
+   *Stacks* and *Queues* are two closely-related data types for manipulating
+   arbitrarily large collection of items defining `push/insert` and `pop/remove`
+   operations.
+
+   The removal operation in a queue remove the oldest item (FIFO),
+   in a stack it remove the newest item (LIFO).
+
+   Implementations:
+
+     Array
+       + push and pop operations in constant time (~ 1);
+       - maybe (in Java, for example) we need to set a maximum size and use space proportional to that
+         maximum;
+     Linked list
+       + push and pop operation in constant time (~ 1);
+       + is a recursive data structure allowing arbitrarily large collections;
+       + the space used is always proportional to the number of items in the
+         collection;
+     Array double
+       + alternative to linked list;
+       + dynamically adjust the size of the array (if necessary) to add new
+         items;
+       - double the size of the array, by creating a new array of twice the
+         size, copying the stack items to the new array, and resetting the
+         reference to the new array;
+     Parameterized data types
+       + can insert objects of any type;
+       - when we pop it, client must cast to the appropriate type (error prone);
+       - contradicts "ask don't touch" principle;
+
+   It is common to implement an `Iterator/Enumerable` interface for traversing
+   operation.
+
+   Queues applications:
+     - serving shared resources (printer, disk, CPU);
+     - transferring data asynchronously between two processes (IO buffers as
+       pipes, File IO, sockets);
+     - interrupt handling;
+
+   Stack applications:
+     - Parsing;
+     - Function calls;
