@@ -78,3 +78,34 @@
    typically 8 bytes.
 
    An impossibly slow program is almost as useless as an incorrect one.
+
+** Sorting and Searching
+
+   One reason that sorting is so useful is that it is much easier to search
+   something in a sorted list than an unsorted one.
+
+   *Binary search* is often called *bisection search* because we bisect the
+   interval at each stage.
+
+   Searching an element in a sorted array using binary search we start at the
+   entry in the middle, eliminating either the subarray before or after the
+   current entry (~ log N), whereas using a *brute force* solution would be start
+   at the beginning examining each entry until the final (~ N).
+
+   *Insertion sort* is a brute force sorting algorithm based on a simple method
+    similar to arrange hands of playing cards (~ N^2).
+
+   *Mergesort* is a faster sorting method that uses a *devide-and-conquer*
+   approach with a *recursive* strategy that to mergesort an array we devide it
+   in two halves, sort them independently and merge the results (~ N log N).
+
+   Problems related to sorting and searching:
+
+     Frequency counts:
+       - Zipf's law says that the frequency of the ith most frequent word of M
+         distinct word is proportional to 1/i
+         (https://en.wikipedia.org/wiki/Zipf%27s_law)
+     Longest repeated substring:
+       - computer-assisted music analysis
+       - cryptography
+       - data compression
