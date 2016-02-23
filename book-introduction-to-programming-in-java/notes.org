@@ -154,3 +154,39 @@
    Stack applications:
      - Parsing;
      - Function calls;
+
+** Symbol Tables
+
+   A *symbol table* is a data type used to associate values and keys pairs using
+   put and get operations.
+
+   The keys generally are immutable, comparable (to allow ordering) and is not
+   permitted to use `null` as key or value
+     contains = get(key) !≃ null
+     remove = put(key, null)
+
+   Applications:
+
+     - DNS;
+     - Indexing;
+
+   Implementations:
+
+     Array (binary search)
+       - Maintains two parallel arrays of keys and values keeping them in
+         key-sorted order.
+       - get = ~ log N;
+       - put = ~ N;
+     Linked list
+        - get = ~ N;
+	- put = ~ N;
+     Binary Search Tree
+       - recursive;
+       - in worst case the *BST* is totally unbalanced and get/put are ~ N;
+       - using a variation of BST known as *red-black tree* the get/put in the
+         worst case is ~ log N.
+       - allows extended operations (min, max, range)
+     Set
+       - is a symbol table with no values;
+       - could use BST to implement it;
+       - direct implementation is simpler and clearer than using BST;
