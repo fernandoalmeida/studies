@@ -190,3 +190,30 @@
        - is a symbol table with no values;
        - could use BST to implement it;
        - direct implementation is simpler and clearer than using BST;
+
+** Graphs
+
+   A mathematical model, comprised of a set of vertices and a set of edges,
+   used to study pairing among entities where edges represents a connection
+   between two vertices;
+
+   *small-world phenomenon* is a graph property also known as *six degree of
+    separation*
+
+   Applications:
+     - Telecom;
+     - Circuits;
+     - Social networks;
+     - Internet hyperlinks;
+
+   Given two vertices in a graph, a *path* is a sequence of edges connecting
+   them.
+
+   *Breadth-first search* (*BFS*) is an algorithm for traversing or searching
+   tree or graph data structures. It starts at the tree root (or some arbitrary
+   node of a graph, sometimes referred to as a 'search key' and explores the
+   neighbor nodes first, before moving to the next level neighbors.
+   (https://en.wikipedia.org/wiki/Breadth-first_search)
+
+   One of the classic applications of *shortest-paths* algorithms is to find the
+   degrees of separation of individuals in social networks.
