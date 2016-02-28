@@ -1,6 +1,7 @@
 * Week 0 - Welcome to Algorithms, Part 1
 
 ** Commented books
+
   - Algorithms + Data Structures = Programs
     Niklaus Wirth
 
@@ -12,3 +13,35 @@
 
   - Introduction to Programming in Java (recommended)
     http://introcs.cs.princeton.edu/java/home/
+
+* Week 1 - Union Find
+
+** Dinamic Connectivity
+
+  - A scientific approach to designing and analysing algorithms:
+    1. model the problem;
+    2. find an algorithm to solve it;
+    3. fast enough? fits in memmory?
+    4. if not, figure out why;
+    5. find a way to address the problem;
+    6. iterate until sitisfied.
+
+  - `is_connected_to` is an equivalence relation (reflexive, symmetric, transitive)
+
+  - The expected interface to Union Find implementations is:
+
+    #+BEGIN_SRC java
+      public interface UF {
+          // add connection between p and q
+          public void union(int p, int q);
+
+          // commponent identifier for p (0 to N-1)
+          public int find(int p);
+
+          // are p and q in the same component?
+          public boolean connected(int p, int q);
+
+          // number of components
+          public int count();
+      }
+    #+END_SRC
