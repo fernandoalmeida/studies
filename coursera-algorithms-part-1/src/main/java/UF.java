@@ -10,4 +10,16 @@ public interface UF {
 
     // number of components
     public int count();
+
+    // process reading StdIn (default implementation, allowed in Java 8)
+    default public void process() {
+	while (!StdIn.isEmpty()) {
+	    int p = StdIn.readInt();
+	    int q = StdIn.readInt();
+
+	    union(p, q);
+	}
+
+	System.out.println(count() + " components");
+    }
 }

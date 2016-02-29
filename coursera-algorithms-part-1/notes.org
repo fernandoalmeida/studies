@@ -45,3 +45,10 @@
           public int count();
       }
     #+END_SRC
+
+  - Testing standard input files:
+      gradle build
+      cd build/classes/main
+      java QuickFind < ../../../data/tinyUF.txt   #        11 connections
+      java QuickFind < ../../../data/mediumUF.txt #       900 connections
+      java QuickFind < ../../../data/largeUF.txt  # 2,000,000 connections

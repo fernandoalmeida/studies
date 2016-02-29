@@ -42,4 +42,11 @@ public class QuickFind implements UF {
     public int count() {
 	return count;
     }
+
+    public static void main(String[] args) {
+	int N = StdIn.readInt();
+	QuickFind qf = new QuickFind(N);
+
+	qf.process();
+    }
 }
