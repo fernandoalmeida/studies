@@ -28,7 +28,7 @@
 
   - `is_connected_to` is an equivalence relation (reflexive, symmetric, transitive)
 
-  - The expected interface to Union Find implementations is:
+  - The expected *interface* to Union Find implementations is:
 
     #+BEGIN_SRC java
       public interface UF {
@@ -46,9 +46,44 @@
       }
     #+END_SRC
 
+  - *QuickFind* is an *eager* approach to Union Find algorithm;
+
+  - *QuickUnion* is a *lazy* approach to Union Find algorithm;
+
+  +-------------+------------+------------------+------------+
+  | algorithim  | initialize |      union       |    find    |
+  +-------------+------------+------------------+------------+
+  | quick-find  |     N      |        N         |     1      |
+  +-------------+------------+------------------+------------+
+  | quick-union |     N      | N (+ find roots) |     N      |
+  +-------------+------------+------------------+------------+
+
+  - Rough standard (sinse 1950) = 10^9 (1 billion) operations per second:
+
+    Quick-Find = 10^9 union commands * 10^9 objects
+               = 10^18 operations
+               = 10^9 seconds
+               = 32 years of computer time
+
   - Testing standard input files:
+
+    #+BEGIN_SRC shell-script
       gradle build
       cd build/classes/main
-      java QuickFind < ../../../data/tinyUF.txt   #        11 connections
-      java QuickFind < ../../../data/mediumUF.txt #       900 connections
-      java QuickFind < ../../../data/largeUF.txt  # 2,000,000 connections
+      input=../../../data/largeUF.txt # 2,000,000 connections
+
+      time java QuickFind < input
+      # => 6 components
+      #
+      # => real	58m14.662s
+      # => user	58m11.808s
+      # => sys	0m3.916s
+
+      time java QuickUnion < input
+      # => 6 components
+      #
+      # => real	318m13.572s
+      # => user	318m13.192s
+      # => sys	0m11.556s
+
+    #+END_SRC
