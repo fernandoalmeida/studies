@@ -61,12 +61,30 @@
   +-------------------------------+------------+---------+------+
     * = includes cost of finding roots
 
+  +-------------------------------+----------------------+
+  |          algorithm            |   wrost-case-time    |
+  +-------------------------------+----------------------+
+  |          quick-find           |         M N          |
+  +-------------------------------+----------------------+
+  |          quick-union          |         M N          |
+  +-------------------------------+----------------------+
+  |     weighted-quick-union      |     N + M log N      |
+  +-------------------------------+----------------------+
+  |  path-compressed-quick-union  |      N + M lg N      |
+  +-------------------------------+----------------------+
+    * M union-find operations on a set of N objects
+
   - Rough standard (sinse 1950) = 10^9 (1 billion) operations per second:
 
     Quick-Find = 10^9 union commands * 10^9 objects
                = 10^18 operations
                = 10^9 seconds
                = 32 years of computer time
+
+  - Path compressed weighted quick union reduces time from 32 years to 6
+    seconds.
+
+  - Supercomputer won't help much, the solution is to use good algorithms.
 
   - Testing standard input files:
 
@@ -78,21 +96,28 @@
       time java QuickFind < input
       # => 6 components
       #
-      # => real	58m14.662s
-      # => user	58m11.808s
-      # => sys	0m3.916s
+      # => real 58m14.662s
+      # => user 58m11.808s
+      # => sys  0m3.916s
 
       time java QuickUnion < input
       # => 6 components
       #
-      # => real	318m13.572s
-      # => user	318m13.192s
-      # => sys	0m11.556s
+      # => real 318m13.572s
+      # => user 318m13.192s
+      # => sys  0m11.556s
 
       time java WeightedQuickUnion < input
       # => 6 components
       # =>
-      # => real	0m3.596s
-      # => user	0m4.112s
-      # => sys	0m0.164s
+      # => real 0m3.596s
+      # => user 0m4.112s
+      # => sys  0m0.164s
+
+      time java PathCompressedQuickUnion < input
+      # => 6 components
+      # =>
+      # => real 0m3.472s
+      # => user 0m3.984s
+      # => sys  0m0.112s
     #+END_SRC
