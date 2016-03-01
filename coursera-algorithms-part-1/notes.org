@@ -50,13 +50,16 @@
 
   - *QuickUnion* is a *lazy* approach to Union Find algorithm;
 
-  +-------------+------------+------------------+------------+
-  | algorithim  | initialize |      union       |    find    |
-  +-------------+------------+------------------+------------+
-  | quick-find  |     N      |        N         |     1      |
-  +-------------+------------+------------------+------------+
-  | quick-union |     N      | N (+ find roots) |     N      |
-  +-------------+------------+------------------+------------+
+  +-------------------------------+------------+---------+------+
+  |          algorithm            | initialize | union   | find |
+  +-------------------------------+------------+---------+------+
+  |          quick-find           |     N      |   N     |  1   |
+  +-------------------------------+------------+---------+------+
+  |          quick-union          |     N      |   N *   |  N   |
+  +-------------------------------+------------+---------+------+
+  |     weighted-quick-union      |     N      | lg N *  | lg N |
+  +-------------------------------+------------+---------+------+
+    * = includes cost of finding roots
 
   - Rough standard (sinse 1950) = 10^9 (1 billion) operations per second:
 
@@ -86,4 +89,10 @@
       # => user	318m13.192s
       # => sys	0m11.556s
 
+      time java WeightedQuickUnion < input
+      # => 6 components
+      # =>
+      # => real	0m3.596s
+      # => user	0m4.112s
+      # => sys	0m0.164s
     #+END_SRC

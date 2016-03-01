@@ -1,6 +1,6 @@
 public class QuickUnion implements UF {
-    private int[] id;
-    private int count;
+    protected int[] id;
+    protected int count;
 
     public QuickUnion(int N) {
 	id = new int[N];
