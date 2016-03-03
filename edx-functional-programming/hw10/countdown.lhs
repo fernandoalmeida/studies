@@ -51,8 +51,9 @@ Combinatorial functions
 > perms []                      =  [[]]
 > perms (x:xs)                  =  concat (map (interleave x) (perms xs))
 >
-> choices                       :: [a] -> [[a]]
-> choices                       =  undefined
+> choices, choices2             :: [a] -> [[a]]
+> choices xs                    =  concat (map perms (subs xs))
+> choices2 xs                   =  [zs | ys <- subs xs, zs <- perms ys]
 
 Formalising the problem
 -----------------------
@@ -63,9 +64,11 @@ Formalising the problem
 Brute force solution
 --------------------
 
-> split                         :: [a] -> [([a],[a])]
-> split                         =  undefined
-> 
+> split :: [a] -> [([a],[a])]
+> split [] = []
+> split [_] = []
+> split (x : xs) = ([x], xs) : [(x : ls, rs) | (ls, rs) <- split xs]
+>
 > exprs                         :: [Int] -> [Expr]
 > exprs []                      =  []
 > exprs [n]                     =  [Val n]
