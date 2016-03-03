@@ -4,7 +4,7 @@ import Control.Monad
 
 data Concurrent a = Concurrent ((a -> Action) -> Action)
 
-data Action 
+data Action
     = Atom (IO Action)
     | Fork Action Action
     | Stop
@@ -19,42 +19,38 @@ instance Show Action where
 -- ===================================
 
 action :: Concurrent a -> Action
-action = error "You have to implement action"
-
+action (Concurrent m) = m (\_ -> Stop)
 
 -- ===================================
 -- Ex. 1
 -- ===================================
 
 stop :: Concurrent a
-stop = error "You have to implement stop"
-
+stop = Concurrent (\_ -> Stop)
 
 -- ===================================
 -- Ex. 2
 -- ===================================
 
 atom :: IO a -> Concurrent a
-atom = error "You have to implement atom"
-
+atom m = Concurrent (\c -> Atom ( do a <- m ; return (c a)))
 
 -- ===================================
 -- Ex. 3
 -- ===================================
 
 fork :: Concurrent a -> Concurrent ()
-fork = error "You have to implement fork"
+fork m = Concurrent (\c -> Fork (action m) (c ()))
 
 par :: Concurrent a -> Concurrent a -> Concurrent a
-par = error "You have to implement par"
-
+par m1 m2 = Concurrent (\_ -> Fork (action m1) (action m2))
 
 -- ===================================
 -- Ex. 4
 -- ===================================
 
 instance Monad Concurrent where
-    (Concurrent f) >>= g = error "You have to implement >>="
+    (Concurrent f) >>= g = Concurrent (\c -> f (\k -> case g k of (Concurrent t) -> t c))
     return x = Concurrent (\c -> c x)
 
 
@@ -63,7 +59,11 @@ instance Monad Concurrent where
 -- ===================================
 
 roundRobin :: [Action] -> IO ()
-roundRobin = error "You have to implement roundRobin"
+roundRobin [] = return ()
+roundRobin (x : xs) = case x of
+  Atom a -> a >>= (\a' -> roundRobin (xs ++ [a']))
+  Fork a1 a2 -> roundRobin (xs ++ [a1, a2])
+  Stop -> roundRobin xs
 
 -- ===================================
 -- Tests
@@ -74,7 +74,7 @@ ex0 = par (loop (genRandom 1337)) (loop (genRandom 2600) >> atom (putStrLn ""))
 
 ex1 :: Concurrent ()
 ex1 = do atom (putStr "Haskell")
-         fork (loop $ genRandom 7331) 
+         fork (loop $ genRandom 7331)
          loop $ genRandom 42
          atom (putStrLn "")
 
@@ -94,4 +94,3 @@ genRandom 42   = [71, 71, 17, 14, 16, 91, 18, 71, 58, 75]
 
 loop :: [Int] -> Concurrent ()
 loop xs = mapM_ (atom . putStr . show) xs
-
