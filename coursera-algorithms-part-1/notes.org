@@ -93,31 +93,159 @@
       cd build/classes/main
       input=../../../data/largeUF.txt # 2,000,000 connections
 
-      time java QuickFind < input
+      time java QuickFind < $input
       # => 6 components
       #
       # => real 58m14.662s
       # => user 58m11.808s
       # => sys  0m3.916s
 
-      time java QuickUnion < input
+      time java QuickUnion < $input
       # => 6 components
       #
       # => real 318m13.572s
       # => user 318m13.192s
       # => sys  0m11.556s
 
-      time java WeightedQuickUnion < input
+      time java WeightedQuickUnion < $input
       # => 6 components
       # =>
       # => real 0m3.596s
       # => user 0m4.112s
       # => sys  0m0.164s
 
-      time java PathCompressedQuickUnion < input
+      time java PathCompressedQuickUnion < $input
       # => 6 components
       # =>
       # => real 0m3.472s
       # => user 0m3.984s
       # => sys  0m0.112s
     #+END_SRC
+
+** Analysis of Algorithms
+
+   - Reasons to analyse algorithms
+
+     * Predict performance;
+     * Compare them;
+     * Provide guarantees;
+     * Understand theoretical basis;
+     * Avoid performance bugs (primary pratical reason);
+
+   - Scientific method
+
+     * Observe;
+     * Hypothesize (must be falsifiable);
+     * Predict;
+     * Verify
+     * Validate
+
+   - System independent effects
+
+     * Algorithm
+     * Input data
+
+   - System dependent effects
+
+     * Hardware: CPU, memory, cache
+     * Software: compiler, interpreter, GC
+     * System: OS, network, apps
+
+   - Total running time = sum of cost * frequency for all operations
+
+     * Cost depends on machine, compiler.
+     * Frequency depends on algorithm, input data.
+
+   - Cost of basic operations (nanoseconds - 2.2GHz+2GB)
+     a + b            =  2.1 (int)   4.6 (float)
+     a * b            =  2.4 (int)   4.2 (float)
+     a / b            =  5.4 (int)  13.5 (float)
+     Math.sin(x)      = 91.3
+     Math.atan2(x, y) = 129.0
+     int a            = C1
+     a = b            = C2
+     a < b            = C3
+     a[i]             = C4
+     a.length         = C5
+     new int[N]       = C6 N
+     new int[N][N]    = C7 N^2
+
+   - Common order-of-growth classifications (a small set of functions)
+
+     1       = constant
+     log N   = logarithmic
+     N       = linear
+     N log N = linearithmic
+     N^2     = quadratic
+     N^3     = cubic
+     2^N     = exponential
+     N!      = factorial
+
+   - 3-Sum algorithms
+
+     #+BEGIN_SRC shell-script
+       gradle build
+       cd build/classes/main
+       input=../../../data/8Kints.txt # 8,000 numbers
+
+       time java ThreeSum $input # ~ N^3
+       # => 32074
+       # =>
+       # => real 2m51.755s
+       # => user 2m51.728s
+       # => sys  0m0.164s
+
+       time java ThreeSumBinarySearch $input # ~ N^2 log N
+       # => 32074
+       # =>
+       # => real 0m1.873s
+       # => user 0m2.024s
+       # => sys  0m0.040s
+     #+END_SRC
+
+   - Types of analyses
+
+     * Best case
+     * Worst case
+     * Average case
+
+   - Commonly-used notations
+
+     +--------------------+----------------------------+---------------------------+---------+
+     | notation           | provides                   | used to                   | example |
+     +--------------------+----------------------------+---------------------------+---------+
+     | Tilde              | leading term               | provide approximate model | ~ 10 N² |
+     +--------------------+----------------------------+---------------------------+---------+
+     | Big Theta          | asynthotic order of growth | classify algorithms       | Θ(N²)   |
+     +--------------------+----------------------------+---------------------------+---------+
+     | Big Oh             | Θ(N²) and smaller          | develop upper bounds      | O(N²)   |
+     +--------------------+----------------------------+---------------------------+---------+
+     | Big Omega          | Θ(N²) and larger           | develop lower bounds      | Ω(N²)   |
+     +--------------------+----------------------------+---------------------------+---------+
+
+   - Memory consumption
+
+     For primitive types is not difficult to estimate memory consumption, we can
+     count the number of variables and weight them by number of bytes according
+     to their type:
+
+       Primitive types:
+         boolean = 1
+         char = 2
+         int / float = 4
+         long / double = 8
+
+       Arrays: 24 + entries
+         char[] = 16 + 2N
+         string = 40 + 2N
+         int[] = 16 + 4N
+         int[][] = ~ 4N^2
+         double[][] = ~ 8N^2
+
+       Object:
+         16
+	 + instance variables
+         + 8 (if inner class)
+	 + padding (round up to multiples of 8 bytes)
+
+     WeightedQuickUnion ~ 8N
