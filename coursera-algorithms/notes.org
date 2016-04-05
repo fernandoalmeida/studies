@@ -249,3 +249,48 @@
 	 + padding (round up to multiples of 8 bytes)
 
      WeightedQuickUnion ~ 8N
+
+* Week 2 - Bags, Queues and Stacks
+
+  Fundamental data types related to collection of objects, that implement
+  operations insert, remove, iterate and test if empty, differing by the remove
+  operation.
+
+** Stacks
+
+   *Stack* = *LIFO* (Last In First Out)
+   Operations = push / pop
+
+   Stack<Item> implementation using linked list:
+
+     - Every operation takes constant time.
+     - A Stack with N items uses ~ 40 N bytes (+ item size).
+
+   Stack<Item> implementation using array:
+
+     - Every operation takes constant amortized time.
+     - Less wasted space.
+
+** Queues
+
+   *Queue* = *FIFO* (First In First Out)
+   Operations = enqueue / dequeue
+
+** Iterators
+
+   An *Iterable* has a method that returns an *Iterator*.
+   An *Iteragor* has methods *hasNext()* and *next()*.
+   It allows more elegant syntax on loops.
+
+** Bags
+
+   Generalization of *Set* that allows multiple instances of the elements.
+   Order does not matter.
+
+** Java collections library
+
+   java.util.List (interface)
+     java.util.LinkedList
+     java.util.ArrayList
+   java.util.Queue (interface)
+   java.util.Stack (bloated, extends *Vector* and implements *List*)
