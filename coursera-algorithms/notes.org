@@ -294,3 +294,61 @@
      java.util.ArrayList
    java.util.Queue (interface)
    java.util.Stack (bloated, extends *Vector* and implements *List*)
+* Week 2 - Elementary sorts
+
+  A total order is a binary relation <= that satisfies *antisimmetry*,
+  *transitivity* and *totality* (v <= w or w <= v or both).
+
+  *Double.NaN <= Double.NaN* is false, so it is not total order because violates
+  totality.
+
+  User-defined comparable types need implement the *Comparable* interface
+  (v.compareTo(w) returning -1, 0 or 1).
+
+** Selection sort
+
+   - In interation i, find index min of smallest remaining entry;
+   - Swap a[i] and a[min].
+
+   ~ N²/2 compares (quadratic time, even if input is sorted)
+     N exchanges (data movement is minimal, linear number of exchanges)
+
+** Insertion sort
+
+   - In iteration i, swap a[i] with each larger entry to its left.
+
+   ~ N²/4 compares
+   ~ N²/4 exchanges
+
+   if the array is ordered makes N-1 compares and 0 exchanges.
+   if the array is in reverse order makes ~ N²/2 compares and N²/2 exchanges.
+   if the array is partially-ordered, runs linear time (exchanges = inversions).
+
+** Shell sort
+
+   - Move entries more than one position at a time by h-sorting the array.
+
+     Big increments => small subarray.
+     Small increments => nearly in order.
+     A g-sorted array remains g-sorted after h-sorting it.
+
+   - Increment sequenes:
+
+     powers of two = NO.
+     Powers of two minus one = Maybe.
+     3x + 1 = OK (easy to compute).
+
+   ~ O(N³/²) in worst case with 3x + 1 sequence.
+
+** Shuffle sort
+
+   - Generate a random real number for each array entry;
+   - Sort the array with any algorithm.
+
+** Applications
+
+   Convex hull (smallest perimeter fence enclosing the points)
+
+     - Robot motion planning (shortest path from s to t avoiding obstacles).
+     - Farhest pair (largest distance between a set of points).
+     - Graham scan (traverse making only counterclockwise turns).
