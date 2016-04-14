@@ -35,3 +35,64 @@
   `pkg-config systemd --variable=systemdsystemconfdir` returns the path of the
   system configuration directory. Packages should alter the content of these
   directories only with the enable and disable commands of the systemctl.
+
+** Unit files
+
+   The syntax is inspired by XDG Desktop Entry Specification ".desktop" files.
+
+   If systemd encounters an unknown option, it will write a warning log message
+   but continue loading the unit.
+
+   If an option or section name is prefixed with X-, it is ignored completely by
+   systemd. Applications may use this to include additional information in the
+   unit files.
+
+   Along with a unit file `foo.service`, a "drop-in" directory `foo.service.d/`
+   may exist. All files with the suffix ".conf" from this directory will be
+   parsed after the file itself is parsed.
+
+   The directory `foo.service.requires/` may exist. All unit files symlinked
+   from such a directory are implicitly added as dependency. This is useful to
+   hook units into the start-up of other units, without having to modify their
+   unit files.
+
+   Optionally, units may be instantiated from a template file at runtime. This
+   allows creation of multiple units from a single configuration file.
+
+*** [Unit] section
+
+   Carries generic information about the unit that is not dependent on the type
+   of unit. Each unit may have also a type-specific section, e.g. [Service] for
+   a service unit.
+
+   Example options:
+
+   *Requires/Conflicts* = requirement dependencies on other units.
+   *Before/After* = ordering dependencies between units.
+   *OnFailure* = list of units activated when enters the "failed" state.
+   *PropagatesReloadsTo* = units where reload will be propagated to.
+   *JobTimeoutAction* = additional action to take when the time-out is hit.
+   *StartLimitAction* = action to take if the start rate limit is hit.
+
+*** [Install] section
+
+   Is not interpreted by systemd during runtime; it is used by the enable and
+   disable commands during installation of a unit.
+
+   Example options:
+
+   *Alias* = additional names this unit shall be installed under.
+   *Also* = Additional units to install/deinstall.
+
+*** Example
+
+    #+begin_src
+    [Unit]
+    Description=Foo
+
+    [Service]
+    ExecStart=/usr/sbin/foo-daemon
+
+    [Install]
+    WantedBy=multi-user.target
+    #+end_src
