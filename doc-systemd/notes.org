@@ -1,0 +1,37 @@
+* systemd
+
+  A system and service manager for Linux.
+
+  Provides a dependency system between various entities called *units* of 12
+  different types, including:
+
+  - *Service* units start and control daemons and processes they consist of.
+  - *Socket* units encapsulate local IPC or network sockets.
+  - *Timer* units trigger activation of other units based on timers.
+  - *Path* units activate other services when file system objects are modified.
+
+  Units may be *active*, *inactive* or *failed* (a special state).
+
+  Dependencies control includes positive and negative requirement (Requires,
+  Conflicts) and ordering (After, Before). If only a requirement dependency
+  exists between two units but no ordering dependency, they will be started in
+  parallel.
+
+  Requests for state changes are encapsulated as 'jobs' and maintained in a job
+  queue.
+
+  systemd is compatible with the SysV, init scripts are supported and read as an
+  alternative (though limited) configuration file format.
+
+  systemd has a minimal transaction system: if a unit is requested to start up
+  or shut down it will add it and all its dependencies to a temporary
+  transaction.
+
+  Packages should place unit files in the directory returned by `pkg-config
+  systemd --variable=systemdsystemunitdir` (/lib/systemd/system).
+
+  User configuration always takes precedence.
+
+  `pkg-config systemd --variable=systemdsystemconfdir` returns the path of the
+  system configuration directory. Packages should alter the content of these
+  directories only with the enable and disable commands of the systemctl.
