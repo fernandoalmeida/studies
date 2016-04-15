@@ -84,6 +84,39 @@
    *Alias* = additional names this unit shall be installed under.
    *Also* = Additional units to install/deinstall.
 
+*** [Service] section
+
+   A unit file whose name ends in `.service` encodes information about a process
+   controlled and supervised by systemd.  The [Service] section, carries
+   information about the service and the process it supervises.
+
+   Example options:
+
+   - *Type* = start-up type (simple, oneshot, forking, dbus, notify, idle).
+   - *PIDFile* = absolute file name pointing to the PID file of this daemon.
+   - *ExecStart* = Commands that are executed when this service is started.
+   - *ExecStartPre/Pos* = Additional commands executed before ExecStart.
+     May not be used to start long-running processes. All forked processes
+     will be killed before the next service process is run.
+   - *ExecReload* = commands to trigger a configuration reload in the service.
+     It is strongly recommended to set ExecReload to a command that
+     synchronously waits for reloading to complete.
+   - *ExecStop* = Commands to execute to stop the service started via ExecStart.
+   - *ExecSropPost* = Additional commands executed after the service is stopped.
+     It is recommended to use this setting for clean-up operations that
+     shall be executed even when the service failed to start up correctly.
+   - *Restart* = Configures whether the service shall be restarted when the
+     service process exits, is killed, or a timeout is reached (no, on-failure,
+     on-abnormal, on-abort, always).
+   - *FailureAction* = action to take when the service enters a failed state.
+   - *EnvironmentFile/Environment*
+   - *WorkingDirectory/RootDirectory*
+   - *User/Group*
+
+   Shell command lines are not directly supported, they need to be passed
+   explicitly to a shell implementation of some kind.
+   Ex: `/bin/sh -c 'dmesg | tac'`
+
 *** Example
 
     #+begin_src
