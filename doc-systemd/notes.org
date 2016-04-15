@@ -67,12 +67,12 @@
 
    Example options:
 
-   *Requires/Conflicts* = requirement dependencies on other units.
-   *Before/After* = ordering dependencies between units.
-   *OnFailure* = list of units activated when enters the "failed" state.
-   *PropagatesReloadsTo* = units where reload will be propagated to.
-   *JobTimeoutAction* = additional action to take when the time-out is hit.
-   *StartLimitAction* = action to take if the start rate limit is hit.
+   - *Requires/Conflicts* = requirement dependencies on other units.
+   - *Before/After* = ordering dependencies between units.
+   - *OnFailure* = list of units activated when enters the "failed" state.
+   - *PropagatesReloadsTo* = units where reload will be propagated to.
+   - *JobTimeoutAction* = additional action to take when the time-out is hit.
+   - *StartLimitAction* = action to take if the start rate limit is hit.
 
 *** [Install] section
 
@@ -81,8 +81,8 @@
 
    Example options:
 
-   *Alias* = additional names this unit shall be installed under.
-   *Also* = Additional units to install/deinstall.
+   - *Alias* = additional names this unit shall be installed under.
+   - *Also* = Additional units to install/deinstall.
 
 *** [Service] section
 
@@ -129,3 +129,57 @@
     [Install]
     WantedBy=multi-user.target
     #+end_src
+
+** Command line
+
+   *systemdctl* = used to introspect and control the state of the "systemd".
+
+    Example optinos:
+
+   - -H, --host = execute the operation remotely.
+   - -M, --machine = execute the operation on a local container.
+   - -r, --recursive = also show units of local containers.
+
+*** Unit commands:
+
+   - start/stop/reload/restart/status
+   - show = computer-parseable version of status.
+   - cat = print fragments and drop-ins (source files) of units.
+
+*** Unit file commands:
+
+   - enable/disable
+   - mask/unmask = link/unlink units to /dev/null making impossible to start them.
+
+*** Machine commands
+
+   - list-machines = List the host and all running local containers.
+
+*** Environment commands
+
+   - show/set/unset/import-environment
+
+*** Daemon commands
+
+   - daemon-reload/reexec
+
+*** System commands
+
+   - halt/power-off/reboot/suspend/hibernate
+
+*** Examples
+
+   #+begin_src
+   systemctl enable foo.service
+   systemctl start foo.service
+   systemctl status home.mount
+   systemctl stop foo@*.service
+   #+end_src
+
+** References
+
+- https://www.freedesktop.org/software/systemd/man/systemd.html
+- https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+- https://www.freedesktop.org/software/systemd/man/systemd.service.html
+- https://www.freedesktop.org/software/systemd/man/systemd.exec.html
+- https://www.freedesktop.org/software/systemd/man/systemctl.html
