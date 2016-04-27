@@ -1,8 +1,15 @@
 * Control Groups
 
-Control Groups provide a mechanism for aggregating/partitioning sets of tasks,
-and all their future children, into hierarchical groups with specialized
-behaviour.
+cgroups (aka control groups) is a Linux kernel feature to limit, police and
+account the resource usage for a set of processes. It provides a mechanism for
+aggregating/partitioning sets of tasks, and all their future children, into
+hierarchical groups with specialized behaviour.
+
+Compared to other approaches like the `nice` command or `limits.conf`, cgroups
+are more flexible as they can operate on subsets of processes (possibly with
+different system users).
+
+** Definitions
 
 A *cgroup* associates a set of tasks with a set of parameters for one or more
 subsystems.
@@ -46,9 +53,23 @@ then the kernel runs the command specified by the contents of the
 If the clone_children flag is enabled in a cgroup, a new cpuset cgroup will copy
 its configuration from the parent during initialization.
 
-To start a new job, using the "cpuset" cgroup subsystem, the steps are:
+** Installation
 
-#+begin_src bash
+The installation can be done using any of *libcgroup*, *cgmanager* or *systemd*.
+
+** Usage
+
+They can be used in multiple ways:
+
+- By accessing the cgroup *filesystem* directly.
+- Using the *cgm* client (part of the cgmanager).
+- Via *cgcreate*, *cgexec* and *cgclassify* (part of the libcgroup).
+
+To start a new job, using the *cpuset* cgroup subsystem, the steps are:
+
+- Using the *filesystem*:
+
+#+begin_src shell-script
   mount -t tmpfs cgroup_root /sys/fs/cgroup
   mkdir /sys/fs/cgroup/cpuset
   mount -t cgroup cpuset -ocpuset /sys/fs/cgroup/cpuset
@@ -62,6 +83,50 @@ To start a new job, using the "cpuset" cgroup subsystem, the steps are:
   cat /proc/self/cgroup
 #+end_src
 
+- Using *libcgroup* command line tools:
+
+#+begin_src shell-script
+  cgcreate -g memory,cpu:groupname/foo
+  cgexec -g memory,cpu:groupname/foo bash
+#+end_src
+
+- Using *cgmanager*:
+
+#+begin_src shell-script
+  cgm create memory groupname/foo
+  cgm create cpu    groupname/foo
+  bash
+  cgm movepid memory groupname/foo $pid_of_bash
+  cgm movepid cpu    groupname/foo $pid_of_bash
+#+end_src
+
+To *limit the memory* usage of all processes in this group to 10 MB, run:
+
+#+begin_src shell-script
+  echo 10000000 > /sys/fs/cgroup/memory/groupname/foo/memory.limit_in_bytes
+  # OR
+  cgm setvalue memory groupname/foo memory.limit_in_bytes 10000000
+#+end_src
+
+Similarly you can *change the CPU priority* ("shares") of this group. By default
+all groups have 1024 shares. A group with 100 shares will get a ~10% portion of
+the CPU time:
+
+#+begin_src shell-script
+  echo 100 > /sys/fs/cgroup/cpu/groupname/foo/cpu.shares
+#+end_src
+
+You can also change the cgroup of already running processes
+
+#+begin_src shell-script
+  pidof bash
+  # 13244 13266
+  cgclassify -g memory,cpu:groupname/foo `pidof bash`
+  cat /proc/13244/cgroup
+  # 11:memory:/groupname/foo
+  #  6:cpu:/groupname/foo
+#+end_src
+
 You can attach the current shell task by doing `echo 0 > tasks`.
 
 You can use the cgroup.procs file instead of the tasks file to move all threads
@@ -71,6 +136,21 @@ Since every task is always a member of exactly one cgroup in each hierarchy, to
 remove a task from its current cgroup you must move it into a new cgroup
 (possibly the root cgroup).
 
+If you want your cgroups *to be created at boot*, you can define them in
+*/etc/cgconfig.conf*:
+
+#+begin_src
+  group groupname/foo {
+    cpu {
+      cpu.shares = 100;
+    }
+    memory {
+      memory.limit_in_bytes = 10000000;
+    }
+  }
+#+end_src
+
 ** References
 
 - https://www.kernel.org/doc/Documentation/cgroup-v1/cgroups.txt
+- https://wiki.archlinux.org/index.php/cgroups
