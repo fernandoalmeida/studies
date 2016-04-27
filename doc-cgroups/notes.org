@@ -1,0 +1,76 @@
+* Control Groups
+
+Control Groups provide a mechanism for aggregating/partitioning sets of tasks,
+and all their future children, into hierarchical groups with specialized
+behaviour.
+
+A *cgroup* associates a set of tasks with a set of parameters for one or more
+subsystems.
+
+A *subsystem* is a module that treat groups of tasks in particular ways,
+typically a "resource controller" that schedules a resource or applies
+per-cgroup limits.
+
+A *hierarchy* is a set of cgroups arranged in a tree. It is possible exist
+multiple active hierarchies, each one is a partition of all tasks in the system.
+
+User-level code may create and destroy cgroups by name in an instance of the
+cgroup virtual file system, specify and query to which cgroup a task is
+assigned, and list the task PIDs assigned to a cgroup.
+
+A file system of type "cgroup" may be mounted, all support for querying and
+modifying cgroups is via this cgroup file system.
+
+Each cgroup is represented by a directory in the cgroup file system containing
+the following files describing that cgroup:
+
+- *tasks* list of tasks (by PID) attached to that cgroup.
+- *cgroup.procs* list of thread group IDs in the cgroup.
+- *notify_on_release* flag run the release agent on exit?
+- *release_agent* the path to use for release notifications.
+- Other subsystems such as *cpusets* may add additional files.
+
+New cgroups are created using the mkdir system call or shell command.  The
+properties of a cgroup, such as its flags, are modified by writing to the
+appropriate file in that cgroups directory.
+
+The use of a Linux virtual file system (vfs) to represent the cgroup hierarchy
+provides for a familiar permission and name space for cgroups, with a minimum of
+additional kernel code.
+
+If the notify_on_release flag is enabled in a cgroup, then whenever the last
+task in the cgroup leaves and the last child cgroup of that cgroup is removed,
+then the kernel runs the command specified by the contents of the
+"release_agent" file in that hierarchy's root directory.
+
+If the clone_children flag is enabled in a cgroup, a new cpuset cgroup will copy
+its configuration from the parent during initialization.
+
+To start a new job, using the "cpuset" cgroup subsystem, the steps are:
+
+#+begin_src bash
+  mount -t tmpfs cgroup_root /sys/fs/cgroup
+  mkdir /sys/fs/cgroup/cpuset
+  mount -t cgroup cpuset -ocpuset /sys/fs/cgroup/cpuset
+  cd /sys/fs/cgroup/cpuset
+  mkdir Foo
+  cd Foo
+  /bin/echo 2-3 > cpuset.cpus
+  /bin/echo 1 > cpuset.mems
+  /bin/echo $$ > tasks
+  sh # The subshell 'sh' is now running in cgroup Foo
+  cat /proc/self/cgroup
+#+end_src
+
+You can attach the current shell task by doing `echo 0 > tasks`.
+
+You can use the cgroup.procs file instead of the tasks file to move all threads
+in a threadgroup at once.
+
+Since every task is always a member of exactly one cgroup in each hierarchy, to
+remove a task from its current cgroup you must move it into a new cgroup
+(possibly the root cgroup).
+
+** References
+
+- https://www.kernel.org/doc/Documentation/cgroup-v1/cgroups.txt
