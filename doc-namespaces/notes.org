@@ -1,0 +1,86 @@
+* Namespaces
+
+Namespaces are a Linux-specific feature.
+
+A namespace wraps a global system resource in an abstraction that makes it
+appear to the processes within the namespace that they have their own isolated
+instance of the global resource.
+
+Changes to the global resource are visible to other processes that are members
+of the namespace, but are invisible to other processes.
+
+One use of namespaces is to implement containers.
+
+Linux provides the following namespaces:
+
+- *IPC*       System V IPC, POSIX message queues
+- *Network*   Network devices, stacks, ports, etc.
+- *Mount*     Mount points
+- *PID*       Process IDs
+- *User*      User and group IDs
+- *UTS*       Hostname and NIS domain name
+
+Since Linux 3.8, no privilege is required to create a user namespace.
+
+Each process has a */proc/[pid]/ns/* subdirectory containing one entry for each
+namespace that supports being manipulated by *setns*:
+
+#+begin_src shell-script
+  ls -l /proc/$$/ns
+#+end_src
+
+The content of this symbolic link is a string containing the namespace type and
+inode number:
+
+#+begin_src shell-script
+  readlink /proc/$$/ns/uts
+  # uts:[4026531838]
+#+end_src
+
+** IPC namespace
+
+   IPC namespaces isolate certain IPC resources, namely, *System V IPC* objects
+   and *POSIX message queues*.
+
+   Each IPC namespace has its own set of System V IPC identifiers and its own
+   POSIX message queue filesystem..
+
+   Requires a kernel that is configured with the *CONFIG_IPC_NS* option.
+
+** Network namespace
+
+   Network namespaces provide isolation of the system resources associated with
+   networking: *network devices*, IPv4 and IPv6 protocol stacks, *IP routing
+   tables*, *firewalls*, the */proc/net* directory, the */sys/class/net*
+   directory, *port numbers* (*sockets*), and so on.
+
+   A virtual network device (*veth*) pair provides a *pipe-like* abstraction
+   that can be used *to create tunnels* between network namespaces, and can be
+   used *to create a bridge* to a physical network device in another namespace.
+
+   Requires a kernel that is configured with the *CONFIG_NET_NS* option.
+
+** Mount namespace
+
+   Mount namespaces isolate the set of *filesystem mount points*, meaning that
+   processes in different mount namespaces can have different views of the
+   *filesystem hierarchy*.
+
+   The */proc/[pid]/mounts* file lists all the filesystems currently mounted in
+   the process's mount namespace.  The format of this file is documented in
+   *fstab*.
+
+** PID namespace
+
+   ...
+
+** User namespace
+
+   ...
+
+** UTS namespace
+
+   UTS namespaces provide isolation of two system identifiers: the *hostname*
+   and the *NIS* domain name.
+
+   Requires a kernel that is configured with the *CONFIG_UTS_NS* option.

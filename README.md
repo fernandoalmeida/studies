@@ -10,4 +10,5 @@
 ## Docs
 
 * [:open_file_folder:](doc-systemd/) [systemd](https://www.freedesktop.org/wiki/Software/systemd/)
-* [:open_file_folder:](doc-cgroups/) [cgroups](https://www.kernel.org/doc/Documentation/cgroup-v1/cgroups.txt)
+* [:open_file_folder:](doc-cgroups/) [Linux Control Groups](https://www.kernel.org/doc/Documentation/cgroup-v1/cgroups.txt)
+* [:open_file_folder:](doc-namespaces) [Linux Namespaces](http://man7.org/linux/man-pages/man7/namespaces.7.html)
