@@ -72,7 +72,36 @@ inode number:
 
 ** PID namespace
 
-   ...
+   PID namespaces isolate the process ID number space, meaning that processes in
+   different namespaces can have the same PID. It *allows containers* to provide
+   functionality such as *suspending/resuming* the set of processes in the
+   container and *migrating* the container to a new host while the processes
+   inside the container maintain the same PIDs.
+
+   PIDs start at 1 and calls to *fork*, *vfork* or *clone* will produce unique
+   PIDs within the namespace.
+
+   The first process created in a new namespace has the PID 1, and is the *init*
+   process for the namespace. A child process that is orphaned within the
+   namespace will be reparented to this process rather than init.
+
+   If the init process of a PID namespace terminates, the kernel terminates all
+   of the processes in the namespace via a *SIGKILL* signal.
+
+   PID namespaces can be nested: each one has a parent, except for the initial
+   (*root*).
+
+   A process is *visible* only to processes contained in its own PID namespace
+   and in descendants of that namespace. In this context, visible means that one
+   process can be the target of operations by another process using *system
+   calls* that specify a process ID.
+
+   Calling *readlink* on the path */proc/self* yields the process ID of the
+   caller in the namespace of the process that mounted the *procfs*.  This can
+   be useful for introspection purposes, when a process wants to discover its
+   PID in other namespaces.
+
+   Requires a kernel that is configured with the *CONFIG_PID_NS* option.
 
 ** User namespace
 
