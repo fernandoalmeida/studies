@@ -105,7 +105,49 @@ inode number:
 
 ** User namespace
 
-   ...
+   User namespaces isolate *security-related* identifiers and attributes, in
+   particular, *user IDs* and *group IDs*, the *root directory*, *keys* and
+   *capabilities*.
+
+   A process's user and group IDs can be different inside and outside a user
+   namespace. In other words, the process has full privileges for operations
+   inside the user namespace, but is unprivileged for operations outside the
+   namespace.
+
+   User namespaces can be nested. The kernel imposes a *limit of 32 nested
+   levels* of user namespaces.
+
+   Each process is a member of exactly one user namespace.
+
+   Starting in Linux 3.8, unprivileged processes can create user namespaces, the
+   others depends on *CAP_SYS_ADMIN* capability.
+
+   When a non-user-namespace is created, it is owned by the user namespace.
+   Actions on the non-user-namespace require capabilities in the corresponding
+   user namespace
+
+   The */proc/[pid]/uid_map* and */proc/[pid]/gid_map* files expose the mappings
+   for user and group IDs inside the user namespace for the process pid.
+
+   Each line in the uid_map file specifies a 1-to-1 mapping of a range of
+   contiguous user IDs between two user namespaces.
+
+   #+begin_src shell-script
+     cat /proc/$$/uid_map
+     # =>  0 0 4294967295
+   #+end_src
+
+   This mapping tells us that the range starting at user ID 0 in this namespace
+   maps to a range starting at 0 in the parent namespace, and the length of the
+   range is the largest 32-bit unsigned integer.
+
+   The */proc/[pid]/setgroups* file displays the string *"allow"* if processes
+   in the user namespace that contains the process pid are permitted to employ
+   the setgroups system call; it displays *"deny"* if setgroups is not permitted
+   in that user namespace.
+
+   If either the user or the group ID of the file has no mapping inside the
+   namespace, the *set-user/group-ID* bit is silently ignored.
 
 ** UTS namespace
 
