@@ -1,0 +1,84 @@
+* Chapter 1 - Introduction
+
+Languages like *Erlang*, *Haskell*, *Go*, *Scala* and *Clojure* are gaining
+mindshare, in part thanks to their *excellent support for concurrency*.
+
+Only faster hardware can limit performance of the code, today we can to exploit
+*multiple cores* and that means exploiting parallelism.
+
+*Concurrent* and *parallel* refer to *related but different* things.
+
+A concurrent program has multiple logical *threads of control*, that may or may
+not run in parallel.
+
+Concurrency is an aspect of the *problem domain* (ex: handling multiple
+sumultaneous events).
+
+Parallelism is an aspect of the *solution domain* (processing different
+data portions in parallel).
+
+Concurrent programs are naturally *nondeterministic* (different results
+depending on timing of events).
+
+Parallelism, doesn't necessarily imply nondeterminism.
+
+Modern computers are parallel on many different levels:
+
+  * *bit-level parallelism*
+    - add 32-bit numbers as a sequence of 8-bit operations.
+
+  * *instruction-level parallelism*
+    - techniques like *pipelining*, *out-of-order execution* and *speculative
+      execution*.
+
+  * *data parallelism*
+    - aka *SIMD* (single instruction, multiple data).
+    - perform the same operation on a large quantity of data in parallel.
+
+  * *task-level parallelism*
+    - multiple processors.
+    - from a programmer's point of view, the most important is the *memory
+      model* whether it's *shared* or *distributed*.
+    - *shared-memory*:
+      - each processor can access any memory location.
+      - *interprocessor communication* is primarily *through memory*.
+      - typically *faster* and *simpler*.
+      - depending on the number of processors becomes a *bottleneck*.
+    - *distributed-memory*:
+      - each processor has its own *local memory*.
+      - *interprocessor communication* is primarily *via the network*.
+      - unavoidable to fault-tolerant systems.
+
+Concurrency enables *resilient*, or *fault-tolerant*, software through
+*independence* and *fault detection*.
+
+Concurrent solution can be *simpler and clearer* that its sequential equivalent
+when written *with right language and tools* considering the extra work required
+to *translate concurrent problems to sequential solutions* (multiple simple
+threads instead a single complex thread).
+
+The seven models
+
+  * *Threads and locks*
+    - underlies many of the other models.
+    - default choice for much concurrent software.
+  * *Functional programming*
+    - eliminate *mutable state*.
+    - intrinsically *thread-safe* and *easily parallelized*.
+  * *The Clojure Way*
+    - separates *identity* and *state*.
+    - *hybrid* of imperative and functional programming.
+  * *Actors*
+    - *general-purpose* concurrent programming model.
+    - can target both shared and distributed memory architectures.
+    - facilitates *geographical distribution*.
+    - strong support for *fault tolerance and resilience*.
+  * Communicating Sequential Processes
+    - has much in common with the actor model.
+    - based on *message passing*.
+  * Data parallelism
+    - *GPU* utilizes data parallelism.
+    - can be used on a wider range of tasks (ex: finite element analysis).
+  * The Lambda Architecture
+    - combines the strengths of *MapReduce* and *stream* processing.
+    - can tackle a wide variety of *Big Data* problems.
