@@ -7,6 +7,7 @@
 
 * [:open_file_folder:](book-introduction-to-programming-in-java/) [Introduction to Programming in Java](http://introcs.cs.princeton.edu/java/home/)
 * [:open_file_folder:](book-seven-concurrency-models-in-seven-weeks/) [Seven Concurrency Models in Seven Weeks](https://pragprog.com/book/pb7con/seven-concurrency-models-in-seven-weeks)
+* [:open_file_folder:](book-programming-phoenix/) [Programming Phoenix](https://pragprog.com/book/phoenix/programming-phoenix)
 
 ## Docs
 
