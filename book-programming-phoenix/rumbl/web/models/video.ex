@@ -7,12 +7,13 @@ defmodule Rumbl.Video do
     field :description, :string
 
     belongs_to :user, Rumbl.User
+    belongs_to :category, Rumbl.Category
 
     timestamps
   end
 
   @required_fields ~w(url title description)
-  @optional_fields ~w()
+  @optional_fields ~w(category_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -23,5 +24,6 @@ defmodule Rumbl.Video do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> assoc_constraint(:category)
   end
 end
