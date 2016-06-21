@@ -176,6 +176,18 @@
    systemctl stop foo@*.service
    #+end_src
 
+** OBS:
+
+*** Status of .service says "active (exited)" in green.
+
+    This is perfectly normal. In the case with `iptables` it is because there is
+    no daemon to run, it is controlled in the kernel. Therefore, it exits after
+    the rules have been loaded.
+
+    But would be an error if the process should be running, for example meaning
+    that `god/monit` was started but it could not start the application
+    (asynchronously) and exited.
+
 ** References
 
 - https://www.freedesktop.org/software/systemd/man/systemd.html
@@ -183,3 +195,4 @@
 - https://www.freedesktop.org/software/systemd/man/systemd.service.html
 - https://www.freedesktop.org/software/systemd/man/systemd.exec.html
 - https://www.freedesktop.org/software/systemd/man/systemctl.html
+- https://wiki.archlinux.org/index.php/Systemd_FAQ
