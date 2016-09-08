@@ -54,7 +54,7 @@ defmodule Rumbl.VideoChannel do
   end
 
   defp compute_additional_info(annotation, socket) do
-    results = Rumbl.InfoSys.compute(annotation.body, limit: 1, timeout: 10_000)
+    results = InfoSys.compute(annotation.body, limit: 1, timeout: 10_000)
 
     for result <- results do
       attrs = %{url: result.url, body: result.text, at: annotation.at}
