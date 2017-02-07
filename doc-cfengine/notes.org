@@ -1,0 +1,66 @@
+* Introduction and System overview
+
+  *CFEngine* is a distributed system for *managing* and *monitoring* computers
+  across an IT network.
+
+  *Machines* on the network that have CFEngine installed, and have *registered
+  themselves* with a *policy server*, will each be running a set of CFEngine
+  component applications that manage and interpret textual files called
+  policies.
+
+  *Policy files* themselves contain sets of *instructions* to ensure machines on
+  the network are in full compliance with a *defined state*.
+
+  At the *atomic level* are sets, or *bundles*, of what are known in the
+  CFEngine world as *Promises*. Promises are at the heart of *Promise Theory*,
+  which is in turn what CFEngine is all about.
+
+  Every *statement* in CFEngine is a promise to be kept at some time or
+  location. It is continuously verified and maintained. It is not a one-off
+  operation, but a self-repairing process should anything deviate from the
+  policy.
+
+  If the actual state of a system is not in compliance with the predefined
+  desired state, CFEngine will bring it into compliance. This is known as
+  *convergence*.
+
+  That model is represented using the *declarative* CFEngine policy language. The
+  policies are downloaded in all hosts from the policy server. Every host will
+  interpret and execute each *instruction* in a predetermined *order*.
+
+  CFEngine continually *monitors* all of the hosts in real-time, and
+  automatically *correct* them to bring everything back into compliance if
+  necessary.
+
+  There are basically two categories of machines in a CFEngine environment:
+  policy servers and their client hosts.
+
+  Hosts are responsible for ensuring they continuously pull the latest policies,
+  from the policy server. They are additionally responsible for ensuring they
+  remain fully compliant with the instructions contained within the policy
+  files, at all times.
+
+  All CFEngine software *components* exist in */var/cfengine/bin*.
+
+  *cf-execd* is the scheduling daemon, similar to cron. It executes and collects
+  the output of *cf-agent*.
+
+  *cf-serverd* is a socket listening daemon providing two services: it acts as a
+  *file server* for remote file copying and allows an authorized *cf-runagent*
+  to start a cf-agent run.
+
+  *cf-monitord* is the monitoring daemon for CFEngine.
+
+  *cf-agent* evaluates policy code and makes changes to the system. Everything
+  that happens on a client machine happens because of cf-agent. The agent is
+  the part of CFEngine that manipulates system resources.
+
+  *cf-key* is the CFEngine key generator makes key pairs for remote
+  authentication.
+
+  *cf-promises* is CFEngine's promise verifier. It is used to run a *pre-check*
+  of policy code before cf-agent attempts to execute.
+
+  *cf-runagent* is a helper program that can be used to run cf-agent on a number
+  of remote hosts. It can be used to trigger an immediate deployment of new
+  policy, if their existing policy includes that they check for updates.
