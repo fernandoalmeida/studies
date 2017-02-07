@@ -100,3 +100,52 @@
   in case of error*. All of the desired-state changes are managed locally by
   each individual host, and *continuously repaired* to ensure on-going
   compliance with policy.
+
+* Directory Structure
+
+  The CFEngine application is fully contained within the */var/cfengine*
+  directory tree.
+
+  - *bin*
+    agents cf-{agent,key,promises,runagent,twin}
+    daemons cf-{execd,monitord,serverd,consumer,hub})
+  - *modules*
+    scripts used in commands promises
+  - *inputs*
+    cached policy repository (used by cf-agent)
+  - *masterfiles*
+    policy repository for access control (doesn't run directly by cf-agent)
+    policies obtained from masterfiles are cached in inputs for execution
+  - *output*
+    spooled run-reports
+  - *reports*
+  - *state*
+  - *plugins*
+
+  CFEngine writes numerous logs and records to its private workspace:
+
+  - *cf3.[hostname].runlog*
+  - *cfagent.[hostname].log* (deprecated)
+  - *cfagent.[hostname].log*
+
+  Database files:
+
+  - *cf_classes.lmdb*
+    classes that have been defined on the current host
+    includes their relative frequencies, scaled like a probability
+  - *cf_lastseen.lmdb*
+    hosts that last contacted this host, or were contacted by this host
+  - *performance.lmdb*
+    times of jobs
+    longer tasks such as commands and file copying are measured by default
+
+  Other files:
+
+  - PIDs
+    cf-{consumer,execd,hub,monitord,serverd}.pid
+  - sockets
+    cf-hub-local
+  - data
+    policy_server.dat
+  - misc
+    bin/{git,curl,openssl,rsync,psql,redis-cli}
