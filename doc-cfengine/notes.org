@@ -64,3 +64,39 @@
   *cf-runagent* is a helper program that can be used to run cf-agent on a number
   of remote hosts. It can be used to trigger an immediate deployment of new
   policy, if their existing policy includes that they check for updates.
+
+* CFEngine Architecture and Design
+
+  CFEngine *operates autonomously* in a network, under your guidance, it
+  supports anything *from 1 to 100,000+ servers*, was designed to enable
+  *scalable configuration management* in any kind of environment, with an
+  emphasis on supporting large, Unix-like systems that are connected via TCP/IP.
+
+  It doesn't depend on or assume the presence of reliable infrastructure, works
+  opportunistically in any environment, using the fewest possible resources, and
+  it has a limited set of software dependencies.
+
+  A promise is the documentation of an intention to act or behave in some
+  manner. When you make a promise, it is an effort to improve trust. Trust is an
+  economic time-saver. If you can't trust you have to verify everything, and
+  that is expensive.
+
+  CFEngine is a system that *emphasizes the promises a client makes to the
+  overall network*. They are the rules which *clients are responsible* for
+  implementing. We can create large systems of scale because *we don't create a
+  bulky centralized authority*. *There should be no single point-of-failure*
+  when managing machines and people.
+
+  Combining promises with *patterns to describe where and when promises should
+  apply* is what CFEngine is all about.
+
+  There are four commonly cited *phases* in managing systems with CFEngine:
+  - *build* (template of proposed promises)
+  - *deploy* (implementing the policy that was already decided)
+  - *manage* (dealing with rare events that cannot be dealt with automatically)
+  - *audit* (audits the system to determine what actually happened)
+
+  You publish policy revisions, *always moving forward*, *without reverse them
+  in case of error*. All of the desired-state changes are managed locally by
+  each individual host, and *continuously repaired* to ensure on-going
+  compliance with policy.
