@@ -1,0 +1,286 @@
+* Biotecnologia
+
+É o uso da tecnologia biológica para produtos e serviços de utilidade pública.
+
+Grande promessa do século XXI, usado na área petrolífera, saúde, etc.
+
+Envolve biologia, química e engenharia.
+
+Biologia molecular (BM)    = Biologia + Química
+Engenharia ambiental (EM)  = Biologia + Engenharia
+Engenharia industrial (EI) = Química  + Engenharia
+
+BM + EM + EI = Biotecnologia
+
+** Aplicações:
+
+- pesquisa/diagnóstico de doenças e funções biológicas
+- criação de medicamentos (provenientes de DNA recombinante)
+- indústria alimentícia (trangênicos, etc)
+- indústria petrolífera (purificação, etc)
+- produção de energia renovável (etanol, etc)
+
+** História
+
+1917 - Chain Weizmann produz acetona em larga escala a partir de microorganismos
+1928 - Alexandrer Flemming descobre a penicilina (primeiro antibiótico),
+       posteriormente purificada por Howard Florey.
+1980 - Suprema Corte dos EUA permite o patenteamento de técnicas de
+       biorremediação (usando bactérias para quebra de moléculas de petróleo).
+
+** Bibliografia
+
+- Métodos em Biologia Molecular (mais de 1000 edições)
+- Biotechnology: The Science and the Business (Springham, 1999)
+- Introduction to Biotechnology (Thieman, 2008)
+
+** Equipamentos
+
+- Materiais (pipetas, ponteiras, tubos, hacks, becker)
+- Equipamentos (aquecedores, resfriadores, agitadores, balanças, sequenciadores)
+- Reagentes (tampões, enzimas, substratos, macromoléculas)
+
+Em várias ocasiões usamos materiais em unidades muito pequenas como microlitro
+(uL), micrograma (ug), micromolar (uM), etc o que requer equipamentos especiais.
+
+*** Pipetas / ponteiras
+
+Instrumentos de mensuração de precisão e aquisição de volume específico de
+soluções.
+
+Podem ser manuais ou eletrônicas, de volume fixo ou variável e dependente ou não
+de ponteira.
+
+Ex: Labmate (vermelha = 0.5 a 10 microlitro)
+
+*** Tubos / microtubos
+
+São materiais para acomodação e reserva de líquido, sólidos (geralmente em pó).
+
+Muito usados para reações enzimáticas, etc.
+
+Ex: Falcon
+
+*** Outros equipamentos
+
+Muitos reagentes precisam ser estocados em ambientes com temperatura baixa (até
+-80° Célcius).
+
+Termoagitadores / termocicladores
+
+Freezers (de -20° até -80°)
+
+Criopreservação em nitrogênio líquido (-172°C) para armazenar céculas,
+bactérias, etc.
+
+Fonte para eletroforese
+
+Estufas
+
+Microscópios (de fluorescencia, de luz)
+
+Lupas
+
+** Centrifugação (princípios fundamentais)
+
+É o princípio no qual se utiliza a força centrífuga para separar com mais
+rapidez componentes químicos que apresentam densidades distintas.
+
+A rotação aumenta a força da gravidade exercida em uma particula e isso acelera
+o processo de sedmentação ou separação dos mesmos.
+
+Quanto menor a diferença de densidade das partículas, maior deve ser a
+velocidade de rotação para separá-los.
+
+Ex: para separar os glóbulos (brancos e vermelhos) do plasma usa-se a
+    centrifugação a 3 mil RPM por 5 a 10 minutos.
+    para separar DNA de RNA usa-se 80 mil RPM por 12 horas.
+
+*** Tipos de centrífugas
+
+- microcentrífuga (tubos de até 2mL, até 15 mil RPM)
+
+- convencional (tubos de até 50ml, até 20 mil RPM)
+
+- ultracentrífuga (muito maior, altíssimas velocidades, até 100 mil RPM)
+
+*** Cuidados básicos
+
+- limpeza interna e externa (contaminação por tubos quebrados, poeira, etc)
+- manutenção das peças (vida útil, lubrificação, etc)
+- balanceamento
+
+** Eletroforese (princípios fundamentais)
+
+É uma técnica empregada para separar moléculas com diferentes cargas ou
+diferentes pesos moleculares.
+
+*** Reagentes:
+
+- Solução tampão ionizada
+- Polímeros (semi sólidos, gelatinosos)
+  Ex: gel de agarose para moléculas maiores (DNA e RNA)
+      gel de Poliacrilamida para moléculas meiores (DNA, RNA e proteínas)
+- Corantes (agentes intercalante, fluorescentes, radioativos, etc)
+
+** Extração e purificação do DNA
+
+*** Introdução
+
+Toda célula possui:
+
+- ácidos nucleicos (DNA e RNA)
+- proteínas diversas (no citoplasma, no núcleo, na membrana)
+- lioídios diversos (de membrana, solúveis na própria célula no tecido adiposo,
+  derivados do colesterol, etc)
+- carboidratos diversos
+- oligoelementos (sais, sódio, potácio, magnécio, cálcio e vitaminas)
+
+Na extração do DNA consideramos todo o resto como *contaminantes*.
+
+*** 1° etapa
+
+romper o envoltório celular, que pode ser por:
+
+- *abrasão física*
+- *ação enzimática*
+- detergentes
+- pressão osmótica
+- aquecimento
+
+destruir enzimas capazes de hidrolisar o DNA (lipídios e proteínas).
+
+*** 2° etapa
+
+eliminar os outros ácidos nucleicos (RNA).
+
+*** 3° etapa
+
+remover todos os contaminantes
+
+- com fenol / clorofórmio
+
+  os contaminantes degradados formam complexos insolúveis que podem ser
+  sedmentados adicionando fenol / clorofórmio à solução.
+
+  RNAs íntegros podem ser retidos de acordo com o pH da solução.
+
+- com coluna de absorção do DNA
+
+  transferimos a solução de DNA + contaminantes para um outro tubo que possui
+  uma coluna de absorção, (feita de sílica, carregada positivamente), como o DNA
+  possui uma alta carga negativa (devido aos grupamentos de fosfato).
+
+  Com esta diferença de cargas, ao fazer uma centrifugação todos os
+  contaminantes atravessam a coluna porém o DNA fica retido.
+
+  também pode ser utilizado para a purificação de RNA.
+
+*** 4° etapa
+
+**** com coluna de absorção
+
+  para extrair o DNA da coluna adicionamos uma solução tampão de eluição
+  carregado também negativamente mas em uma concentração muito maior que o DNA
+  fazendo com que ele tome o lugar do DNA na coluna e desloque o DNA da coluna
+  para a solução.
+
+**** com fenol / clorofórmio
+
+  a solução ainda contém alguns rezíduos/contaminantes e o DNA está em baixa
+  concentração, para concentrar o DNA adicionamos isopropanol na solução, o que
+  faz com que o DNA seja precipitado e com a centrifugação essa precipitação
+  fica grudada no fundo do recipiente, permitindo a remoção da solução,
+  permanecendo apenas o DNA.
+
+** Protocolo fenol / clorofórmio
+
+*** Reagentes
+
+    - tampão STE (100mM NaCl, 10mM Tris HCI, 1mM EDTA);
+    - sódioDodecilSulfato (SDS) 10% (p/V);
+    - proteinase K (20 mg/mL);
+    - fenol/clorofórmio/álcool isoamílico (25:24:1);
+    - clorofórmio puro;
+    - acetato de sódio 3 M (pH 5,2);
+    - isopropano 100% e etanol 70% (V/V);
+    - água ultrapura Dnase e Rnase free ou tampão TE.
+
+*** Equipamentos
+
+    - micropipetas de 1mL, 100uL, 100uL, 10uL;
+    - microtubos de 2mL e 1,5mL;
+    - hacks e suportes para tubos;
+    - termoagitador com suporte de microtubos;
+    - freezer -20°C;
+    - microcentrífuga com rotação de até 14 mil RPM.
+
+*** Procedimentos
+
+    - transferir as células ou tecido para um microtubo de 2mL;
+    - adicionar 500uL de tampão STE, 30uL de SDS à 10% e 10uL de proteinase K;
+    - incubar em termoagitador à 65°C por 1h a 800 RPM;
+    - resfriar à 37°C;
+    - adicionar 5uL de RNase e incubar por 15 minutos a 800 RPM
+      (separar e nomear mais 2 microtubos de 1,5mL);
+    - adicionar 500uL de fenol/clorofórmio/alcool isoamílico e agitar bem;
+    - centrigugar por 10 minutos à 13.400 RPM;
+    - transferir o sobrenadante (aproximadamente 450uL) para outro tubo de 1,5mL
+      (acrescentar mais 400uL de clorofórmio);
+    - centrifugar por 10 minutos à 13.400 RPM;
+    - transferir o sobrenadante para outro microtubo de 1,5mL;
+    - adicionar 30uL de acetato de sódio 3M (pH 5,2);
+    - completar para 1 mL com isopropanol;
+    - agitar vigorosamente;
+    - estocar à 20°C por no mínimo 3 horas (para concentrar);
+    - centrifugar à 14 mil RPM por 30 minutos;
+    - descartar o isopropanol e adicionar 1mL de etanol 70% (V/V) gelado;
+    - centrifugar a 14 mil RPM por mais 3 minutos;
+    - descartar o etanol por inversão;
+    - dar um "spin" na amostra;
+    - remover o etanol residual;
+    - resuspender o DNA em 30uL com água ou Tampão TE;
+    - estocar em freezer -20°C até o momento do uso.
+
+** Protocolo extração salina
+
+*** Reagentes
+
+    - Tampão salina (0,1 M NaCl, 0,1 M sacarose, 0,1 M Tris HCI, 0,05 M EDTA,
+      0,5% SDS, pH 9,1);
+    - Proteinase K (20 mg/mL);
+    - Solução de NaCl 5M;
+    - Rnase H (invitrogen);
+    - Isopropanol 100%, etanol 100% e 70% (V/V);
+    - água ultrapura (livre de Dnase e Rnase) ou tampão TE.
+
+*** Equipamentos
+
+    - micropipetas de 1mL, 100uL, 100uL e 10uL;
+    - microtubos de 2mL e 1,5 mL;
+    - hacks e suportes para tubos;
+    - termoagitador com suporte de microtubos;
+    - freezer -20°C;
+    - microcentrífuga com toração de até 14 mil RPM.
+
+*** Procedimentos
+
+    - transferir as células ou tecido para um microtubo de 2mL;
+    - adicionar 500uL de tampão salina, 10uL de proteinase K;
+    - incubar em termoagitador à 65°C por até 3 horas a 800 RPM;
+    - equilibrar o termoagitador para 37°C;
+    - adicionar 5uL de Rnase H e incubar por 1h;
+    - transferir o sobrenadante para outro tubo de 1,5 mL;
+    - adicionar 40uL de solução de NaCl 5 M;
+    - adicionar em gelo por aproximadamente 15 minutos;
+    - centrifugar a 14 mil RPM por 30 minutos;
+    - transferir o sobrenadante para outro tubo com 100uL de isopropano gelado;
+    - deixar em repouso em temperatura ambiente por 5 minutos;
+    - centrifugar a 14 mil RPM por 20 minutos;
+    - desprezar o sobrenadante;
+    - adicionar 100uL de etanol 100% e centrifugar a 14 mil RPM por 5 minutos;
+    - despresar o sobrenadante e adicionar 100uL de etanol 70%
+    - centrifugar a 14 mil RPM por 5 minutos;
+    - despresar a sobrenadante;
+    - ressuspender o pellet com 30uL de água ultrapura ou tampão TE;
+    - estocar a -20°C.
