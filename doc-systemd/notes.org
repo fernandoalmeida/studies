@@ -23,6 +23,9 @@
   systemd is compatible with the SysV, init scripts are supported and read as an
   alternative (though limited) configuration file format.
 
+  SysV uses a serial initialization process, instead, systemd uses a parallel
+  process.
+
   systemd has a minimal transaction system: if a unit is requested to start up
   or shut down it will add it and all its dependencies to a temporary
   transaction.
@@ -175,6 +178,11 @@
    systemctl status home.mount
    systemctl stop foo@*.service
    #+end_src
+
+*** Debugging
+
+   - systemd-analyse
+   - systemd-analyse blame
 
 ** OBS:
 
