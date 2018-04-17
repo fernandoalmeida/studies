@@ -155,3 +155,8 @@ inode number:
    and the *NIS* domain name.
 
    Requires a kernel that is configured with the *CONFIG_UTS_NS* option.
+
+** References
+
+- http://man7.org/linux/man-pages/man7/namespaces.7.html
+- http://man7.org/linux/man-pages/man7/mount_namespaces.7.html
