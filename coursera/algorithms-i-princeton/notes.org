@@ -1,0 +1,108 @@
+* Connectivity problem
+
+** Quick Find
+
+*** Interface
+
+- constructor(int size) # inicializa a estrutura de dados
+- union(int p, int q) # conecta 2 elementos
+- find(int p) # retorna o elemento a que `p` está conectado
+- connected(int p, int q) # retorna true se p e q estão conectados
+- count # retorna o número de componentes/grupos
+
+*** Data structure
+
+Um array onde:
+
+- o índice representa o ID do elemento;
+- o valor representa o ID do elemento a quem ele está conectado;
+
+Exemplo:
+
+# [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ] # index (só para visualizar aqui na doc)
+  [ 0, 1, 1, 8, 8, 0, 0, 1, 8, 8 ] # value
+
+Nesse caso os elementos conectados são:
+
+- [ 0, 5, 6 ]
+- [ 1, 2, 7 ]
+- [ 3, 4, 8, 9 ]
+
+*** Algorithm
+
+Descobrir se dois elementos estão conectados é O(1).
+Estão conectados se possuem o mesmo valor (estão no mesmo grupo).
+
+Conectar dois elementos X-Y é O(N).
+Muda todos os elementos com valor id[X] para id[Y].
+Quadrático, faz N² operações para unir N elementos.
+
+*** Observações
+
+Um processador padrão processa aproximadamente 10^9 (1 bilhão) de operações por
+segundo. Logo, unir 10^9 elementos com quick find (sendo quadrático) executa
+10^18 operações, ou seja mais de 30 anos.
+
+
+** Quick Union
+
+*** Data structure
+
+Um array onde:
+
+- o índice representa o ID do elemento;
+- o valor representa o ID de seu elemento pai;
+
+Exemplo:
+
+# [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ] # index (só para visualizar aqui na doc)
+  [ 0, 1, 9, 4, 9, 6, 6, 7, 8, 9 ] # value
+
+Nesse os grupos (elementos conectados) são:
+
+- [ 2, 9, 4, 3 ]
+- [ 6, 5 ]
+- 0, 1, 7 e 8 não possuem conexões com outros elementos
+
+*** Algorithm
+
+Descobrir se dois elementos estão conectados é O(N).
+Estão conectados se possuem o mesmo root (id[id[...id[x]...]]).
+Linear pode fazer N operações (no pior caso) até chegar na raiz da árvore.
+
+Conectar dois elementos X-Y é O(1).
+Muda o valor de X para o ID de Y valor id[X] = Y.
+
+** Weighted Quick Union
+
+*** Data structure
+
+O mesmo que o quick union.
+
+*** Algorithm
+
+A árvore é balanceada, o que melhora significativamente a busca em troca de um
+pequeno custo na conexão (que passa a atribuir a raiz do grupo como valor em vez
+do próprio elemento).
+
+depth(x) = 3 * lg(N) (lg = base 2)
+
+** Weighted Quick Union with Path Compression (PC)
+
+*** Data structure
+
+O mesmo que o quick union.
+
+*** Algorithm
+
+O mesmo que o Weighted Quick Union, porém na conexão sempre atribui a raiz a
+todos os parents encontrados.
+
+** Resumo
+
+| algorithm        | initialize | union       | connected   | 1Bi unions (1Bi op/s) |
+|------------------+------------+-------------+-------------+-----------------------|
+| quick find       | O(N)       | O(N)        | O(1)        | 30+ anos              |
+| quick union (QU) | O(N)       | O(N)        | O(N)        | 30+ anos              |
+| weighted QU      | O(N)       | O(log10(N)) | O(log10(N)) |                       |
+| weighted QU + PC | O(N)       | O(log2(N))  | O(log2(N))  | 6 segundos            |
