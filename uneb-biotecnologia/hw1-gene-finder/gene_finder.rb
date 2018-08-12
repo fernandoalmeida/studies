@@ -1,4 +1,5 @@
 # https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=64320
+# https://www.ncbi.nlm.nih.gov/genome/?term=txid64320[Organism:noexp]
 # https://www.ncbi.nlm.nih.gov/nuccore/NC_012532.1?report=fasta&from=107&to=10366
 class GeneFinder
   def initialize(file:)

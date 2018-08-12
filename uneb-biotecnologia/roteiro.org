@@ -1,0 +1,142 @@
+Roteiro do Cálculo de Distância Utilizando Modelos e Técnicas de Reconstrução de
+Árvores Filogenéticas
+
+* Evolução
+
+Em geral, os organismos podem herdar genes por:
+- transferência vertical: passagem de genes de pai para filho
+- transferência horizontal: salto de genes entre organismos
+  ex: resistência aos antibióticos
+
+* Filogenetica
+
+É o estudo da *relação evolutiva entre grupos* de organismos, descobertos por
+meio de sequenciamento de dados moleculares de matrizes de dados morfológicos.
+
+* Taxonomia
+
+É a classificação, identificação e designação dos organismos, baseada em
+informações filogenéticas.
+
+* Arvores Filogeneticas
+
+A evolução é considerada um *processo de ramificação*, onde as populações são
+alteradas ao longo do tempo e formam especiação.
+
+Uma árvore filogenética representa uma *hipótese da ordem dos eventos
+evolucionários* ocorridos.
+
+Quanto *mais taxons* estão disponíveis, *mais robusta* é a árvore resultante.
+
+Quanto *mais dados* estão disponíveis, *mais precisa* é a árvore resultante.
+
+A inclusão de fósseis é de valor inestimável, para fornecer informações em áreas
+esparsas da árvore.
+
+* Classificação / agrupamentos [imagem página 128]
+
+- monofiléticos: *todos* descendem de um ancestral comum
+  ex: aves
+- parafiléticos: contém um ancestral comum, mas *não para todos* os descendentes
+  ex: repteis modernos
+- polifiléticos: *não contém* um ancestral comum
+  ex: mamíferos
+
+* Cladística
+
+Conhecida como *sistemática filogenética* é o método de escolha para inferir
+árvores filogenéticas. Os mais comuns são máxima parcimônia, semelhanças e MCMC.
+
+É objetiva (independente do método a filogenética existe, é única, inequívoca)
+não subjetiva (diferentes filogeneticistas não podem chegar a diferentes
+resultados).
+
+Cada grupo deve ser *obrigatoriamente monofilético*, grupos parafiléticos e
+polifiléticos não são permitidos na classificação.
+
+Se assenta no princípio fundamental de que as espécies devem ser classificadas
+de acordo com o quão recente é o seu ancestral comum.
+
+Quanto mais distante for o ancestral comum a duas espécies, maior será a
+distância entre seus respectivos taxons.
+
+Homologias são características que indicam ancestralidade comum, apesar de poder
+sofrer variações morfológivas e funcionais ao longo do tempo.
+
+Homoplasias são características compartilhadas entre duas ou mais espécies que
+surgiram indepentendemente (não estavam presentes no ancestral comum), por
+exemplo as asas de aves e morcegos que possuem a mesma função mas tem origens
+diferentes.
+
+[imagem na página 145]
+
+Para cladística, a relevância dessa diferença se destaca no momento de
+inferência filogenética, no qual homoplasias não revelam relações de parentesco.
+
+* Cladograma [imagem página 141]
+
+É um diagrama usado pela cladística que mostra as relações entre taxons
+terminais, indicando uma história e sua distribuição em árvore com a finalidade
+de constituir relações de semelhanças e parentescos.
+
+O resultado final de uma análise cladística é uma árvore ou cladograma.
+
+Em um cladograma todos os organismos são colocados sobre as extremidades
+terminais dos ramos e cada nó interior é idealmente binário.
+
+Os dois taxos do mesmo ramo são chamados de taxos ou grupos irmãos.
+
+Cada subárvore é chamada de clado.
+
+Cladogramas não são muito informativos se comparados a árvores filogenéticas,
+não trazem detalhes como por exemplo:
+- brotamento (o ancestral dá origem a outra espécie mas permanece vivente)
+- divisão ou bifurcação (o ancestral origina duas espécie e se extingue)
+- fusão ou hibridização (processo com vários passos, não representado em árvore)
+- anagênese (uma espécie dá lugar a outra)
+
+Etapas na construção de um cladograma:
+- escolha de um grupo de estudo (gêneros, espécies)
+- seleção de caracteres (principal ponto na formação de um cladograma,
+  geralmente matrizes de caracteres são criadas)
+
+Durante a análise do cladograma, un índice é utilizado para mensurar a quantidde
+de eventos homoplásticos na árvore, ou para um caracter em particular. O
+*índice de consistência* é uma razão entre o número mínimo de passos de uma
+série de transformações ou conjunto de séries de transformações pode exibir (m),
+pelo número efetivo de passos apresentados na evolução do caracter ou mostrados
+no cladograma (s). O valor de índice 1 equivale a nenhuma homoplasia e quanto
+mais próximo de 0 mais eventos homoplásicos são mensurados.
+
+* Reconstrução
+
+No passado as árvores filogenéticas eram reconstruídas olhando para fenótipos
+das características anatômicas dos organismos. Hoje em dia, dados moleculares
+(que inclui sequências de proteínas e DNA) são utilizados na reconstrução.
+
+Aplicando a *ponderação homoplasica*, certos caracteres tem mais peso que outros
+na reconstrução de uma árvore.
+
+* Comparação de Árvores
+
+
+
+* Softwares
+
+- TreeJustaposer
+- SplitTree
+- Archaeopteryx
+
+* Metodo Nye
+
+
+
+* Técnicas Algoritimicas
+
+
+
+* Técnica K-neighbor
+
+
+
+* Técnica Parsimonia
