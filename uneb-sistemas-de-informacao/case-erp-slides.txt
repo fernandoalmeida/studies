@@ -1,0 +1,49 @@
+1. A Petrobras
+
+- entre as maiores empresas de petróleo do mundo
+- bolsa de Nova York
+- requisito: gestão integrada
+
+2. A escolha
+
+- começou a avaliar o uso de um ERP em 1997
+- 32 das 40 maiores empresas do ramo já usavam
+- escolheram SAP Brasil + Ernst & Young
+- envolveu 800 profissionais da Petrobras
+- maior implantaço de ERP da América Latina
+- investimento de US$240 milhões
+- retorno estimado de até US$650 milhões
+
+3. O software
+
+- SAP foi fundada em 1972 na Alemanha
+- lider mundial em TI para gestão empresarial
+- R/3 é o principal produto
+- desenvolvido em ABAP/4
+- integra e automatiza processos em tempo real
+
+4. A implantação
+
+- criado o projeto Sinergia
+- 6 meses para parametrizar o SAP
+- documentação e treinamento
+- implantação parcial em 2002 (500 usuários)
+- implantação total em 2004/2005 (22 mil usuários)
+
+5. Os resultados
+
+- Prós
+-- redução de custos
+-- padronizaçao
+-- previsibilidade
+-- rastreabilidade
+-- produtividade
+-- qualidade
+-- confiabilidade
+
+- Contras
+-- barreiras culturais
+-- limitações inerentes ao ERP
+-- dificuldade de integração externa
+-- lento
+-- complexo / não amigável

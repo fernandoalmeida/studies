@@ -1,0 +1,113 @@
+A Petrobras é uma das maiores empresas de petróleo do mundo, é de interesse dos
+acionistas negociar ações na bolsa de Nova York e isso tem pré-requisitos como a
+gestão integrada da empresa.
+
+A implantação de um ERP proporciona benefícios financeiros decorrentes
+principalmente da automação de processos.
+
+A Petrobras iniciou a avaliação para utilização de um ERP em 1997, quando 32 das
+40 maiores empresas de petróleo já haviam adotado esse tipo de solução. Foram
+visitadas empresas do ramo petrolífero que estimularam a continuidade das
+avaliações dos custos e benefícios estratégicos e econômicos decorrentes da
+implantação.
+
+No final da análise escolheram a SAP Brasil como provedora do software ERP e a
+Ernst & Young como consultoria, o processo envolveu quase 800 profissionais da
+Petrobras, resultou na maior implantação de distema de gestão empresarial já
+realizada na América Latina, com investimentos de mais de 240 milhões de dólares
+(mais de 700 milhões de reais) estimando-se o retorno de até 650 milhões de
+dólares com os benefícios da implantação.
+
+A SAP foi fundada em 1972 na Alemanha, é líder mundial em TI para gestão
+empresarial e o R/3 é seu principal produto, desenvolvido na linguagem de
+programação ABAP/4 (sintaxe semelhante ao COBOL, a partir de 99 passou a
+suportar orientação a objetos), integra informações e automatiza processos em
+tempo real.
+
+Para a implantação foi criado o projeto Sinergia, seis meses foram gastos para
+parametrizar o SAP R/3 de acordo com as necessidades da Petrobras, depois disso
+foi criado o material didático e iniciado o treinamento dos usuários.
+
+Em julho de 2002 foi implantado na BR Distribuidora, contemplando 500 usuários,
+e só em outubro de 2004 entrou em operação em toda a Petrobras, contemplando 22
+mil usuários em todo o Brasil, estendendo-se ainda em 2005 com implantações
+complementares.
+
+Antes do ERP a empresa usava diversas ferramentas, o que dificultava a
+consolidação das informações. A principal era o RAST (software próprio da
+Petrobras) era difícil de comunicar e integrar com outros sistemas da empresa.
+
+O processo de migração ocorreu entre 2004 e 2005, providenciou-se também a
+capacitação de agentes multiplicadores para seguir com um treinamento
+progressivo em virtude da dimensão e complexidade do ERP SAP R/3.
+
+Etapas da implantação:
+
+- treinamento;
+- tratamento dos dados;
+- mapeamento de perfis;
+- teste de campo;
+- reunião de decisão para partida;
+- plano de entrada em operação:
+** parada operacional;
+** conversão de dados;
+** acionamento de interfaces;
+** contingência
+** comunicação
+
+Estrutura de suporte:
+
+- coordenador local;
+- apoiador local;
+- multiplicadores;
+
+Resultados positivos:
+
+- estruturais
+
+** capacitação online (canais de comunicação)
+** padronização
+** automatização
+** rastreabilidade
+** controle
+** uniformidade
+
+- materiais
+
+** redução de estoques
+** redução de custos
+** visibilidade dos preços
+** antecipação de necessidades
+
+- RH
+
+** aumento de produtividade e qualidade
+** melhor direcionamento dos profissionais
+** maior agilidade na tomada de decisões
+
+- manutenção
+
+** acompanhamento online
+** maior confiabilidade
+
+- gerenciais
+
+** foco em resultados
+** controle sobre contratos
+** redução de perdas
+** domínio sobre os custos
+** maior rastreabilidade
+** projeção de investimentos futuros
+
+Dificuldades:
+
+- barreiras culturais
+- resistência das pessoas
+- limitações inerentes ao próprio ERP
+- dificuldade de integrar o ERP com sistemas existentes
+- demasiadamente lento
+- não amigável
+
+Melhorias:
+
+- otimização do marketing interno
