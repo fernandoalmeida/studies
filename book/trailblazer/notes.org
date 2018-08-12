@@ -1,0 +1,74 @@
+* Trailblazer book annotations
+
+** Introduction
+
+   Explaining why a conventional Rails architecture fails is simple: There is no
+   architecture.
+
+   The fatal delusion that three abstraction layers, called “MVC”, are
+   sufficient for implementing complex applications is failure by design.
+
+   That is not the purpose of a framework! A framework’s job is to provide
+   boilerplate code and architectural guidance.
+
+   Shortly after its inception in 2004 the Rails core team has completely
+   stopped innovation on the architectural level. Probably assuming that the
+   degree of abstraction is good enough, an incredible work load has been put
+   into making it faster, cleaner, less coupled.
+
+   What made me work on an alternative stack for Rails is the realization that
+   the core team doesn’t want change. The fact that thousands of projects that
+   had a quick start with Rails are now in an unmaintainable state of chaos.
+
+   On an architectural level, everything in Rails is crying for separation and
+   encapsulation.
+
+   When it came to Rails, I saw the problems of the monolithic design and this
+   will always end in the aforementioned disaster.
+
+   Sustainability is my maxim when writing code. I wanted to solve all the
+   dependencies by separating things in a very strict way.
+
+   I believe the puristic Rails Way isn’t appropriate for projects with a
+   complexity greater than a 5-minute blog.
+
+** Trailblazer architectural style
+
+   Trailblazer is also a gem you can install into your application to help you
+   to implement that style.
+
+   Companies would hire me to “improve” their Rails apps on an architectural
+   level, re-structuring their legacy code into a manageable, extendable
+   architecture.
+
+   Vanilla Rails doesn’t give you any kind of high-leveled structure.
+
+   And that brings me to the next problem: third-party gems hook into the same
+   low-level mechanisms as you do. Filters and callbacks are magically
+   added. While this was all made with simplicity for the programmer in mind,
+   the side effects of those hidden semantics can be devastating and ruin your
+   day.
+
+   I like structure and reasonable encapsulation. And that’s what Trailblazer
+   gives you.
+
+** A non-intrusive framework
+
+   It is a design goal to allow you to step-wise introduce the Trailblazer style
+   into your existing application without having to rewrite the entire thing
+   from scratch
+
+   Play with Trailblazer when implementing the next new requirement in your
+   project. Or give it a go one afternoon and refactor a piece of existing
+   legacy code into a concept. Extract business code and validations into an
+   operation.
+
+   Trailblazer was created while reworking Rails code and does absolutely not
+   require a green field with grazing unicorns and rainbows.
+
+   Trailblazer style can be applied to any system design.
+
+   Trailblazer is a collection of gems that implement different patterns. It is
+   up to you to judge and remove layers you don’t like.
+
+** Trailblazer in a nutshell
