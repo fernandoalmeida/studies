@@ -1,0 +1,27 @@
+Data Flip Flop
+  remember the state (t-1)
+  clocked data flip flop
+    - in, out
+    - return the previous input (t-1)
+    - sequential (bottom triangle)
+  bit
+    - in, out, load
+    - combinatorial
+  register
+    - an abstraction for 16 bits (improved flip flop)
+
+RAM
+  - sequence of addressable registers (0 to n-1)
+  - only one register may be selected (at any point of time)
+  - in, address, load, out
+  - word width (in Hack w = 16)
+  - width of address input (k = log²n)
+    - n:8 = k:3
+    - n:64 = k:6
+    - n:512 = k:9
+  - sequential chip
+
+Program Counter (PC)
+  - used to track which instruction should be fethed and executed next
+  - operations: reset (PC = 0), next (PC++), goto (PC = n)
+  - in, load, inc, reset, out
