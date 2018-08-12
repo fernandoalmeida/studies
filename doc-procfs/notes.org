@@ -1,0 +1,12 @@
+* ProcFS
+
+A process information pseudo-filesystem.
+
+Most of the files in the proc filesystem are read-only, but some files are
+writable, allowing kernel variables to be changed.
+
+* Files and directories
+
+* Tools
+
+  *prctl* is a system call to execute operations on a process.
