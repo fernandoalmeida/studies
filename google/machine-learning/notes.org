@@ -1,0 +1,25 @@
+* Machine Learning
+  https://developers.google.com/machine-learning/crash-course/
+
+** Description
+
+A supervised machine learning systems learn how to combine input to produce
+useful predictions on never-before-seen data.
+
+** Terminology:
+
+- *label* is the thing we are predicting;
+- *feature* is an input variable;
+- *example*
+  - is a particular instance of data;
+  - is categorized as labed examples and unlabled examples;
+- *model*
+  - defines the relationship between features and labels;
+  - labled examples are used to *train* the model;
+  - it is important to check how reliable your data is;
+  - the labels applied to some examples may not be trusted;
+  - a trained model is used to predict the label on unlabled examples;
+- *training* means creating or *learning* a model;
+- *inference* means applying a trained model to unlabled examples;
+- a *regression* model predicts continuous values;
+- a *classification* predicts discrete values;
