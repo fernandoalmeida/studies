@@ -1,4 +1,6 @@
 setup:
 	gem install minitest
 test:
-	ruby *_test.rb
+	ruby test/*_test.rb
+
+.PHONY: test
