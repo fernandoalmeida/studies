@@ -1,12 +1,6 @@
 Qual o bug mais foda que você já resolveu?
 
-- tail call recursion na Hodor;
-
 Qual a feature mais foda que você já desenvolveu?
-
-- múltiplos upload em paralelo na eBookPlus;
-- Experiment na hosting-services;
-- Painel de monitoração para nossos microserviços;
 
 Resolver todas as "algorithm questions" regulares.
 
@@ -100,6 +94,7 @@ Must-have knowledge (complex algorithms are not asked in interviews):
 +-------------------------+-------------------------+-------------------------+
 
 For each topic:
+
 - understand how to use and implement it;
 - where it is applicable;
 - what the space and time complexity is;
