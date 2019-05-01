@@ -6,7 +6,7 @@
 A supervised machine learning systems learn how to combine input to produce
 useful predictions on never-before-seen data.
 
-** Terminology:
+** Terminology
 
 - *label* is the thing we are predicting;
 - *feature* is an input variable;
@@ -23,3 +23,30 @@ useful predictions on never-before-seen data.
 - *inference* means applying a trained model to unlabled examples;
 - a *regression* model predicts continuous values;
 - a *classification* predicts discrete values;
+- *linear regression* is a method for finding the straight line or hyperplane
+  that best fits a set of points;
+- *loss* is how well our line is doing at predicting any given example, is the
+  penality for a bad prediction;
+
+** Learning from data
+
+- there are a lot of complex ways to learn from data, but starting simple will
+  open the door to broadly useful methods;
+- the equation generally has a shape like `y = wx + b`
+- a convenient loss function for regression is *squared error* (also called *L2
+  loss*), that calculates the square of the difference between prediction and
+  true value: (label-prediction)^2 or (y-y')^2;
+- Defining L2 loss on a data set we sum the loss of examples in the training set
+  (sometimes is useful to define the mean square error - MSE, to calculate MSE,
+  we sum up all the squared losses and then divide by the number of examples);
+- by convention in machine learning, we write the equation for a model in the
+  format y' = b + wx where:
+  y' is the predicted layer;
+  b is the bias;
+  w is a vector representing the weight of the features;
+  x is a vector representing the features;
+- training a model means define good values for all the weights and bias from
+  labeled examples.
+- in *supervised learning*, a machine learning algorithm examines many examples
+  to build a model (finding a set weights and biases) minimizing the loss
+  (having low loss, on average, across all examples);
