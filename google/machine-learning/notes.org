@@ -50,3 +50,78 @@ useful predictions on never-before-seen data.
 - in *supervised learning*, a machine learning algorithm examines many examples
   to build a model (finding a set weights and biases) minimizing the loss
   (having low loss, on average, across all examples);
+
+** Reducing loss
+
+- *hyperparameters* are the configurations used to tune how the model is trained.
+- *derivative* of the loss function tells us how loss changes for a given
+  example and gives us an efficient way to update model parameters.
+- we repeatedly take small steps in the direction that minimizes loss, we call
+  these *gradient steps* and the strategy is called *gradient descent*.
+- when the data comes in, we compute the gradient of the loss function on that
+  data and the negative gradient tells us in which direction to update the model
+  parameters in order to reduce the loss, we get a new version of the model and
+  now we can compute the gradient and repeat. We can keep taking gradient steps
+  in that direction until we have reached a point in which we have passed the
+  local minimum in which the negative gradient will tell us to go back in the
+  direction that we came from.
+- The *learning rate* dictates how large a step should be in the direction of
+  negative gradient.
+- If the learning rate is too small we may require a lot of computation to
+  reach the minimum.
+- If the learning rate is too large we may overshoot the local minimum and even
+  reach a point in which the loss is bigger than before and also cause the model
+  to diverge (in that case we should try to decrease the learning rate by an
+  order of magnitude).
+- In practice, finding a "perfect" (or near-perfect) learning rate is not
+  essential for successfull model training. The goal is to find a learning rate
+  large enough that gradient descent converges efficiently, but not so large
+  that it never converges.
+- in gradient descent algorithm, it matter were we start.
+- many machine learning problems are not "convex" (neural networks, for
+  example), which means that their curves is not shaped like a "bowl", they are
+  shaped more like an "egg crate" where there are many possible minimum values,
+  so there initialization does matter.
+- neural networks:
+  - non convex
+  - more than one minimum
+  - strong dependency on initial values
+- compute gradient on small data samples (not over the entire data set on each
+  step) works well, getting a new random sample on every step.
+- *stocastic gradient descent*: one example at a time.
+- *mini-batch gradient descent*: batches of 10-1000 in which loss and gradients
+  are averaged over the batch.
+- in practice, generally, we use the strategy of mini-batch gradient descent,
+  the intermediate solution between use one example only and the entire data
+  set.
+- this interative learning might remind the "hot and cold" kid's game for
+  finding a hidden object.
+- interative strategies are prevalent in machine learning, primarily because
+  they scale so well to large data sets.
+- for linear regression problems, it turns out that the starting values of "b"
+  and "w" are not important, so we could pick random values or trivial values
+  like zero, for example. In each step the machine learning system will examine
+  the value of the loss function and generates new values of "b" and "w",
+  repeating this process until the algorithm discover the values that results
+  the lowest possible loss.
+- usually we iterate until overall loss stops changing or changing extremely
+  slowly. When that happens we say that the model has *converged*.
+- the gradient of loss is equal to the derivative (slope) of the curve, and
+  tells which way is "warmer" or "colder" when  there are multiple weights.
+- the gradient is a vector of partial derivatives with respect to the weights.
+- the gradient always points in the direction of steepest increase in the loss
+  function. The gradient descent algorithm takes a step in the direction of the
+  negative gradient in order to reduce loss as quickly as possible.
+- to determine the next point, the gradient descent algorithm adds some fraction
+  of the gradient's magnitude to the previous point.
+- when performing gradient descent, web generalize the process to tune all the
+  model parameters simultaneously, calculating the gradients with respect to
+  both "b" and "w" and updating their respective values.
+- the gradient vector has both a direction and a magnitude.
+- gradient descent algorithms multiply the gradient by the learning rate (step
+  size) to define the next point. If the gradient magnitude is 2.5 and the
+  learning rate is 0.01, the next point will be 0.025 away from the previous
+  one.
+- the goldilocks value is related to how flat the loss function is. If the
+  gradient is small a larger learning rate can be used, which compensates the
+  small grand and results in a larger step size.
