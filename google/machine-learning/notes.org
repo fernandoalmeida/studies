@@ -8,7 +8,7 @@ useful predictions on never-before-seen data.
 
 ** Terminology
 
-- *label* is the thing we are predicting;
+- *label* is the thing we are predicting (sometimes also called a *target*);
 - *feature* is an input variable;
 - *example*
   - is a particular instance of data;
@@ -125,3 +125,43 @@ useful predictions on never-before-seen data.
 - the goldilocks value is related to how flat the loss function is. If the
   gradient is small a larger learning rate can be used, which compensates the
   small grand and results in a larger step size.
+
+** First steps with TensorFlow
+
+- *TensorFlow* is a generic *graph-based computational framework* that can be
+  used to build machine learning models.
+- It offers *high-level APIs* (like tf.estimator) to specity predefined
+  architectures, such as *linear regressors* and *neural networks*.
+- It offers also a *lower-level API*.
+- Useful tools that generaly are use with it:
+  - *SciKit* (metrics)
+  - *Pandas* (mainly *DataFrames* and *Series*)
+  - *NumPy* (*math operations* like log, sin, etc)
+  - *MatPlotLib* (2D charts)
+- Examble of a linear regression with TensorFlow:
+  https://colab.research.google.com/notebooks/mlcc/first_steps_with_tensor_flow.ipynb#scrollTo=AZWF67uv0HTG
+  - import libs
+  - load dataset
+  - randomize data
+  - define features
+  - define targets
+  - configure linear regressor (the model)
+  - define input function (the trainer)
+  - train the model
+  - evaluate results
+    - comparing mean squared errors (MSE and RMSE) with MAX-MIN target values
+    - comparing predictions and target values (pd.DataSet.describe)
+  - plot chart with a sample data selection
+  - test combinations of settings (learning rate, steps, batch size) to improve
+    the results
+- Some tips/rules to test combinations of settings of the training (despite the effects are data dependent)
+  - training error should steadily decrease
+  - if the training has not converged, try running it for longer
+  - if the training error decreases too slowly, increasing the learning rate may help it decrease faster
+    - but sometimes the opposite may happen if the learning rate is too high
+  - if the training error varies wildly, try decreasing the learning rate
+    - lower learning rate plus larger number of steps or larger batch size is often a good combination
+  - very small batch sizes can also cause instability, first try larger values like 100 or 1000, and decrease until you see degradation
+- Other tips that can help to improve the model
+  - try a *synthetic feature*
+  - remove outliers (histograms can help to visualize distributions)
