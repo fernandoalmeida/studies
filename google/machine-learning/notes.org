@@ -192,3 +192,28 @@ useful predictions on never-before-seen data.
   to pay careful attention to the metrics, any time we know that these
   assumptions might be violated.
 - in practice, we sometimes violate these assumptions
+
+** Training and test sets
+
+- one thing we can do is we can divide a large data set into two smaller sets,
+  and use one for training and one for test
+- these are two things in tension when we reason about how large do we make our
+  different splits
+  - the larger we make our training set, the better model we're going to be able
+    to learn
+  - the larger we make our test set, the better we'll be able to have confidence
+    in our evaluation metrics, we'll have tighter confidence intervals
+- if we have a very large data set (billions of examples), we might be able to
+  hold out 10-15% for tests and have strong confidence intervals there
+- if we have a very small data set, then we might need to do something more
+  sophisticated like cross-validation
+- make sure that your test set meets the following two conditions:
+  - is large enough to yield statistically meaningful results
+  - is representative of the data set as a whole (don't pick different
+    characteristics than the training set).
+- *never train on test data* (pay attention to cut duplicated entries)
+- if you "magically" have 100% accuracy on your test data, double check that you
+  have not accidentally trained on your test data
+- if the model is not over-fitting the training data, it will have a training
+  loss simmilar to the test loss
+- a good goal is to have a small delta between training loss and test loss
