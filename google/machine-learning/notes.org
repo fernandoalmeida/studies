@@ -165,3 +165,30 @@ useful predictions on never-before-seen data.
 - Other tips that can help to improve the model
   - try a *synthetic feature*
   - remove outliers (histograms can help to visualize distributions)
+
+** Generalization
+
+- Just fitting the training data is not enough to be doing machine learning, we
+  are interested in generalization
+- we need avoid *over-fit* the peculiarities of the training data to be able to
+  classify new previously unseen data successfully
+- an over-fit model gets a low loss during training but does a poor job
+  predicting new data
+- there is a whole field around this, called *generalization theory*
+- the first machine learning theoretician was William Ockham (from the 14th
+  century)
+- *i.i.d* = independently and identically draws
+- we can use the *test set* methodology to ensure generalization
+  - one way is to divide your data set into two subsets:
+    - training set: a subset to train a model.
+    - test set: a subset to test the model.
+  - good performance on the test set is a useful indicator of good performance
+    on the new data in general, assuming that:
+    - we are always pulling from the same distribution
+    - the distribution is stationary (its behaviour does not change over time)
+    - the test set is large enough
+    - we don't cheat by using the same test set over and over
+- it's important for us to be aware of test set methodology assumptions and also
+  to pay careful attention to the metrics, any time we know that these
+  assumptions might be violated.
+- in practice, we sometimes violate these assumptions
