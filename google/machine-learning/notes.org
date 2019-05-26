@@ -217,3 +217,33 @@ useful predictions on never-before-seen data.
 - if the model is not over-fitting the training data, it will have a training
   loss simmilar to the test loss
 - a good goal is to have a small delta between training loss and test loss
+
+** Validation set
+
+- The more often we evaluate on a given test set, the more we are at risk for
+  implicitly overfitting to that one test set
+- using only two partitions may be insufficient when doing many rounds of
+  hyperparameter tuning
+- we can greatly reduce your chances of overfitting by partitioning the data set
+  into the three subsets (training set, *validation set* and test set)
+- having a validation set we can maintain our test data completely out of the
+  training and hyperparameters validation, doing also the final test with a
+  protected test set
+- in this improved workflow:
+  - pick the model that does best on the validation set
+  - double-check that model against the test set
+- the test set shows if we are overfitting the validation set
+- analyzing the california housing data set, we could select the first 12k
+  examples as training data and the last 5k examples as training set, but this
+  strategy would have some issues:
+  - the target can have different ranges on training and validation sets if it
+    is sorted by year
+  - many targets may have different ranges on training and validation sets if
+    they have different locations (latitude and longitude)
+  - median_income is on a scale from about 3 to 15, but it is not at all clear
+    what this scale refers, it is not documented anywhere
+  - the rooms_per_person feature is generally on a sane scale, with a 75th
+    percentile value of about 2. But there are some very large values, like 18
+    or 55, which may show some amount of outliers or corruption in the data
+- to improve our analysis and avoid issues related to data sorting, is a good
+  idea to randomize the data set before select the training and validation data
