@@ -12,7 +12,7 @@ useful predictions on never-before-seen data.
 - *feature* is an input variable;
 - *example*
   - is a particular instance of data;
-  - is categorized as labed examples and unlabled examples;
+  - is categorized as labeled or unlabled examples;
 - *model*
   - defines the relationship between features and labels;
   - labled examples are used to *train* the model;
@@ -21,8 +21,8 @@ useful predictions on never-before-seen data.
   - a trained model is used to predict the label on unlabled examples;
 - *training* means creating or *learning* a model;
 - *inference* means applying a trained model to unlabled examples;
-- a *regression* model predicts continuous values;
 - a *classification* predicts discrete values;
+- a *regression* model predicts continuous values;
 - *linear regression* is a method for finding the straight line or hyperplane
   that best fits a set of points;
 - *loss* is how well our line is doing at predicting any given example, is the
@@ -133,13 +133,12 @@ useful predictions on never-before-seen data.
 - It offers *high-level APIs* (like tf.estimator) to specity predefined
   architectures, such as *linear regressors* and *neural networks*.
 - It offers also a *lower-level API*.
-- Useful tools that generaly are use with it:
-  - *SciKit* (metrics)
-  - *Pandas* (mainly *DataFrames* and *Series*)
-  - *NumPy* (*math operations* like log, sin, etc)
-  - *MatPlotLib* (2D charts)
-- Examble of a linear regression with TensorFlow:
-  https://colab.research.google.com/notebooks/mlcc/first_steps_with_tensor_flow.ipynb#scrollTo=AZWF67uv0HTG
+- Useful tools that generaly are used with it:
+  - [[http://scikit-learn.org/][*SciKit* (metrics)]]
+  - [[https://pandas.pydata.org/][*Pandas* (mainly *DataFrames* and *Series*)]]
+  - [[https://www.numpy.org/][*NumPy* (*math operations* like log, sin, etc)]]
+  - [[https://matplotlib.org/][*MatPlotLib* (2D charts)]]
+- [[https://colab.research.google.com/notebooks/mlcc/first_steps_with_tensor_flow.ipynb#scrollTo=AZWF67uv0HTG][Examble of a linear regression with TensorFlow:]]
   - import libs
   - load dataset
   - randomize data
@@ -154,14 +153,18 @@ useful predictions on never-before-seen data.
   - plot chart with a sample data selection
   - test combinations of settings (learning rate, steps, batch size) to improve
     the results
-- Some tips/rules to test combinations of settings of the training (despite the effects are data dependent)
+- Some tips/rules to test combinations of settings of the training (despite the
+  effects are data dependent)
   - training error should steadily decrease
   - if the training has not converged, try running it for longer
-  - if the training error decreases too slowly, increasing the learning rate may help it decrease faster
+  - if the training error decreases too slowly, increasing the learning rate may
+    help it decrease faster
     - but sometimes the opposite may happen if the learning rate is too high
   - if the training error varies wildly, try decreasing the learning rate
-    - lower learning rate plus larger number of steps or larger batch size is often a good combination
-  - very small batch sizes can also cause instability, first try larger values like 100 or 1000, and decrease until you see degradation
+    - lower learning rate plus larger number of steps or larger batch size is
+      often a good combination
+  - very small batch sizes can also cause instability, first try larger values
+    like 100 or 1000, and decrease until you see degradation
 - Other tips that can help to improve the model
   - try a *synthetic feature*
   - remove outliers (histograms can help to visualize distributions)
@@ -247,3 +250,102 @@ useful predictions on never-before-seen data.
     or 55, which may show some amount of outliers or corruption in the data
 - to improve our analysis and avoid issues related to data sorting, is a good
   idea to randomize the data set before select the training and validation data
+
+** Representation
+
+- to train a model, we must choose the set of features that best represent the
+  data.
+- extracting features from raw data is called *feature engineering*.
+- machine learning people spend ~75% of their time doing feature engineering.
+- example:
+#+BEGIN_SRC ruby
+  # raw data
+  {
+    0: {
+      house_info : {
+        num_rooms: 6,
+        num_bedrooms: 3,
+        street_name: "Main Street",
+        num_basement_rooms: -1,
+        # ...
+      }
+    }
+  }
+
+  # feature vector (feature engineering process)
+  [
+    6.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    9.321,
+    -2.20,
+    1.01,
+    0.0,
+    # ...,
+  ]
+#+END_SRC
+- string features can be handled with *one-hot encoding*. Since models cannot
+  multiply strings by the learned weights, we use feature engineering to convert
+  strings to numeric values. For example, 1 for "Main Street" and 0 for all
+  others.
+- one hot encodings are extremely handy for *categorical data*.
+- we can define a mapping from the feature values, which we'll refer to as the
+  *vocabulary* of possible values, to integers. we can have a catch-all "other"
+  category, known as an *OOV* (*out-of-vocabulary*) bucket
+  example: using this approach, we can map street names to numbers:
+  - 0: Charleston Road
+  - 1: North Shoreline Boulevard
+  - 2: Shorebird Way
+  - 3: Rengstorff Avenue
+  - 4: everything else (OOV)
+- we cannot incorporate vocabulary indexes directly into our model, we need to
+  create a binary vector for each categorical feature. This representation is
+  called a one-hot encoding when a single value is 1, and a *multi-hot encoding*
+  when multiple values are 1. The length of this vector is equal to the number
+  of elements in the vocabulary.
+- if a feature occurs rarely, it's probably not a great feature to use and
+  should maybe be filtered out or converted in a pre-processing step.
+  example: it's better to have an age in years than a timestamp (in seconds).
+- features should have a clear and obvious meaning.
+- features shouldn't have magic values
+  example: instead using -1 to represent a non existing value is prefered to
+  have a boolean feature to show that that other feature defined and this allows
+  the original feature to maintain its natural units of 0 through N.
+- feature values shouldn't change over time (they need to be stationarity).
+- feature shouldn't have crazy outlier values
+  example: in California housing data, if we calculate rooms per person we
+  should have values between 0 and 4 (not 50).
+- other thing to think about is the data binning (discrete binning or bucketing)
+  example: if we use latitude to predict housing prices, there is no sort of
+  linear relationship from North to South to map them directly, but within any
+  particular latitude there is a strong correlation, so we can take that North
+  to South latitude and bucket it up into a bunch of little bins that become
+  boolean features and we can use a one hot encoding.
+- it's incredibly important to know your data (debug it, visualize it using
+  histograms or scatter plots, look for duplicates, missing and outlier data)
+- monitor your data over time (just because our data sources were good yesterday
+  does not mean that they're going to be good tomorrow).
+- *scaling feature values* means converting floating-point qvalues from
+  their natural range (for example, 100 to 900) into a standard range (for
+  example, 0 to 1 or -1 to +1).
+  - helps gradient descent converge more quickly;
+  - helps the model learn appropriate weights for each feature, without feature
+    scaling, the model will pay too much attention to the features having a
+    wider range.
+- one obvious way to scale numerical data is to linearly map [min, max] to a
+  small scale, such as [-1, +1].
+- a popular scaling tactic is to calculate the Z score of each value.
+  - the Z score relates the number of standard deviations away from the mean.
+  - scaled_value = (value - mean) / stddev
+- other popular tatic is the logarithmic scaling.
+- other useful tatic is clipping values to a maximum smaller value (all values
+  that were greater than MAX now become MAX).
+- histograms are a great mechanism for visualizing your data in the
+  aggregate, in addition, getting statistics like the following can help:
+  - maximum and minimum
+  - mean and median
+  - standard deviation
+- treat your data with all the care that you would treat any mission-critical
+  code, good ML relies on good data.
