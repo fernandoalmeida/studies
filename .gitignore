@@ -1,3 +1,5 @@
 tmp
 uneb-biotecnologia/hw1-gene-finder/blastdb
 uneb-biotecnologia/hw1-gene-finder/orfs.*
+**/*.sframe
+**/.ipynb_checkpoints
