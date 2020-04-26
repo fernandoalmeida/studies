@@ -3,3 +3,5 @@ uneb-biotecnologia/hw1-gene-finder/blastdb
 uneb-biotecnologia/hw1-gene-finder/orfs.*
 **/*.sframe
 **/.ipynb_checkpoints
+/coursera/machine-learning-washington/week-6/image_test_data
+/coursera/machine-learning-washington/week-6/image_train_data
