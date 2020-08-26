@@ -1,0 +1,65 @@
+* The Natural Language Processing Workshop
+
+** 1 - Introduction to Natural Language Processing
+
+   *Natural Language* is a mutually agreed upon set of protocols involving words/sounds that we
+   use to communicate with each other.
+
+   *NLP* can be defined as a field of computer science that is concerned with enabling computer
+   algorithms to understand, analyze, and generate natural languages.
+
+   *Text analytics* is the method of extracting meaningful insights and answering questions from
+   text data *without getting into the semantics* of the language.
+
+   *NLP helps us in understanding the semantics* and the underlying meaning of text.
+
+   NLP works at different *levels*:
+   - *Morphological level*: This level deals with understanding word structure and word information.
+   - *Lexical level*: This level deals with understanding the part of speech of the word.
+   - *Syntactic level*: This level deals with understanding the syntactic analysis of a sentence, or
+     parsing a sentence.
+   - *Semantic level*: This level deals with understanding the actual meaning of a sentence.
+   - *Discourse level*: This level deals with understanding the meaning of a sentence beyond just
+     the sentence level, that is, considering the context.
+   - *Pragmatic level*: This level deals with using real-world knowledge to understand the sentence.
+
+
+   NLP can be broadly categorized into two *types*: Natural Language *Understanding* (NLU) and
+   Natural Language *Generation* (NLG).
+
+   NLP applies a wide range of *tasks*:
+   - *Tokenizing*: splitting a sentence into its constituent parts
+   - *Parts-of-speech tagging*: refers to the process of tagging words within sentences as noun,
+     verb, adjective, etc.
+   - *Stop-word removal*: the most frequently occurring words in any language (articles,
+     prepositions, etc)
+   - *Normalization*: different variations of text get converted into a standard form.
+     There are various ways of normalizing text, such as:
+     - *Spelling correction*: one of the most *important* tasks in any NLP (it's time-consuming):
+       - *Identify*: the misspelled word.
+       - *Suggest*: the correctly spelled word.
+     - *Stemming*: convert words into their base forms.
+     - *Lemmatization*: convert words to their base grammatical form.
+
+   *Named Entity Recognition (NER)* is the process of extracting important entities, such as
+   person names, place names, and organization names, from some given text.
+
+   *Word sense disambiguation* is the process of mapping a word to the sense that it should carry.
+
+   *Sentence boundary detection* is the method of detecting where one sentence ends and another
+    begins.
+
+   We can divide an NLP project into several *phases*. These phases are completed in a particular
+   order:
+   1. *data collection*: use existing data, collect from online repositories, crawling web.
+   2. *data processing*: clean the collected data to ensure effectiveness and accuracy:
+     - Converting all the text data to lowercase.
+     - Stop word removal.
+     - Text normalization.
+     - Stemming and lemmatization.
+   3. *feature extraction*: convert text data into its equivalent numerical form
+   4. *model development*: models generally statistical, machine learning-based, deep
+       learning-based, or reinforcement learning-based.
+   5. *model assessment*: evaluate the performance of the model by comparing its precision,
+       recall, and accuracy to others.
+   6. *model deployment*: put into production, integrated to existing system or new products.
