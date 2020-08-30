@@ -63,3 +63,62 @@
    5. *model assessment*: evaluate the performance of the model by comparing its precision,
        recall, and accuracy to others.
    6. *model deployment*: put into production, integrated to existing system or new products.
+
+** Feature Extraction Methods
+
+   There are two main ways to categorize data:
+   - *by structure*:
+     - *structured*: the most organized form of data (ex: databases, CSV).
+     - *semi-structured*: can be transformed into a table (ex: XML, HTML).
+     - *unstructured*: difficult to comprehend without loss information (ex: logs, images).
+   - *by content*:
+     - *text*: written sentences.
+     - *image*: pictures.
+     - *audio*: voice recordings, music.
+     - *video*: a continuous series of images coupled with audio.
+
+   Data cleaning has the objective of extracting meaningful portions from data by eliminating
+   unnecessary details (noisy) that can negatively impact the accuracy of the results.
+
+   Machine learning algorithms do not understand textual data directly, it need to be represented
+   as numerical form or vectors.
+
+   Features can be classified into two categories:
+   - *General features*: do not depend on the content of the text (statistical calculations).
+   - *Specific features*: dependent on the meaning of the text (represent the semantics).
+
+   The *Bag of Words (BoW)* model is one of the most popular feature extraction methods:
+   - The list of all the words (among all documents) is generated.
+   - The document is represented in terms of the presence or absence of all words.
+
+   According to *Zipf's law*, the number of times a word occurs in a corpus is inversely
+   proportional to its rank.
+
+   *Term Frequency-Inverse Document Frequency (TFIDF)* is another represention of text as vector,
+   it gives more weightage to less frequent (rare) than more frequent (common) words.
+
+   There are different techniques for finding the similarity between texts:
+   - *Cosine similarity*: calculating the cosine of the angle between them.
+   - *Jaccard similarity*: Calculated as the ratio of the number of terms that are common between
+     two text documents to the total number of unique terms present in those texts. Only works on
+     BoW vectors.
+
+   The *Lesk algorithm* can be used for words with ambiguous meanings.
+
+   A *word cloud* is a text visualization format in which the size of the word is related to its
+   frequency.
+
+   There are many ways of visualizing texts, some popular are:
+   - *dependency parse tree*: A data structure for mapping dependencies among sentences. For
+     example, the word "help" depends on "the one who helps" and "the ones who are helped".
+   - *named entities*: highlight named entities by using different colors.
+
+** Links / references
+
+- https://github.com/nltk/nltk
+- https://github.com/sloria/TextBlob
+- https://keras.io/
+- https://scikit-learn.org/
+- https://spacy.io/
+- https://matplotlib.org/
+- https://github.com/amueller/word_cloud
