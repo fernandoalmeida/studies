@@ -58,13 +58,13 @@
      - Text normalization.
      - Stemming and lemmatization.
    3. *feature extraction*: convert text data into its equivalent numerical form
-   4. *model development*: models generally statistical, machine learning-based, deep
-       learning-based, or reinforcement learning-based.
+   4. *model development*: models generally statistical, machine learning based, deep learning
+      based, or reinforcement learning based.
    5. *model assessment*: evaluate the performance of the model by comparing its precision,
        recall, and accuracy to others.
    6. *model deployment*: put into production, integrated to existing system or new products.
 
-** Feature Extraction Methods
+** 2 - Feature extraction methods
 
    There are two main ways to categorize data:
    - *by structure*:
@@ -112,6 +112,131 @@
    - *dependency parse tree*: A data structure for mapping dependencies among sentences. For
      example, the word "help" depends on "the one who helps" and "the ones who are helped".
    - *named entities*: highlight named entities by using different colors.
+
+** 3 - Developing a text classifier
+
+   *Machine learning* is the scientific study of algorithms and statistical models that computer
+   systems use to perform tasks using patterns and inference instead of explicit instructions.
+
+   Machine learning is categorized as:
+   - *Unsupervised learning* algorithms learn patterns within data that is not labeled, labels
+   (supervisors) are absent. This category is divided as:
+     - *clustering*: combining objects into groups.
+     - *association*: obtain groups of items that occur together frequently.
+
+   *Hierarchical clustering* groups similar objects to create a cluster based on a *dendrogram*, a
+   representation in the form of a tree.
+
+   *K-means clustering* is a two phase algorithm (assignment and update) that groups objects into
+   "K" clusters, applying the *elbow method* to discover the optimal "K".
+
+   *Supervised learning* need labeled data, it predicts values by analyzing features (independent
+   variables) of the data provided.
+
+   *Classification* algorithms are those that learn patterns from a known dataset to determine
+   classes of unknown datasets.
+
+   Example of classification algorithms:
+   - *Logistic Regression*: used for probabilistic classification, the dependent variable (the
+     outcome) is binary.
+   - *Naive Bayes*: another kind of probabilistic classifier.
+   - *k-nearest neighbor*: used for regression and classification, applies the concept of
+     *homophily* (people who have similar interests stay close).
+
+   Formally, *regression analysis* refers to the process of learning a mapping function, which
+   relates features or predictors (inputs) to the dependent variable (output).
+
+   There are various types of regression:
+   - *univariate*: just one dependent variable
+   - *multivariate*: two or more dependent variables
+   - *simple*: only one predictor or target variable
+   - *multiple*: more than one predictor variable
+   - *linear*
+   - *non-linear*
+   - *polynomial regression*
+   - *stepwise regression*
+   - *ridge regression*
+   - *lasso regression*
+   - *elastic net regression*
+
+   Linear regression in the base algorithm for all the different types of regression.
+
+   There are several algorithms that have both classification and regression forms.
+
+   *Tree-based* methods have high accuracy and model linear and non-linear relationships. Its
+    better than linear regression for handling categorical variables.
+   - *decision tree*:
+   - *random forest*: a forest is a collection of different types of trees, we use several
+     decision trees for prediction.
+
+   In a random forest, an individual tree's vote impacts the final decision.
+
+   Random forest can be used for classification and regression tasks.
+
+   Random forest uses a sampling technique called *bagging*, which *prevents overfitting*.
+
+   Building a random forest often takes a huge amount of time and memory.
+
+   There are various other tree-based algorithms, such as *gradient boosting machines (GBM)* and
+   *extreme gradient boosting (XGBoost)*.
+
+   *Boosting* works by combining "weak" models into a single more accurate model.
+
+   XGBoost is an enhanced version of GBM. It is portable, distributed, fast (written in C++) and
+   allows to store data on disk instead memory (which is useful for very large datasets).
+
+   *Sampling* is the process of creating a subset from a given set of instances, it s necessary
+   when creating models for imbalanced datasets.
+
+   There are different kinds of sampling methods:
+   - *Simple random sampling*: each instance has an equal probability of being selected.
+   - *Stratified sampling*: the original set is divided into parts called "strata", based on given
+     criteria. Random samples are chosen from each of these "strata" according to its proportion.
+   - *Multi-Stage Sampling*: perform stratified sampling at each and every stage.
+
+   A *text classifier* is a machine learning model that is capable of labeling texts based on
+   their content.
+
+   *Feature engineering* is the art of extracting new features from existing ones.
+
+   *Correlation* refers to the statistical relationship between two variables.
+
+   Regression models, including logistic regression, are unable to perform well when correlation
+   between features exists.
+
+   Features with correlation beyond a certain threshold need to be removed.
+
+   The most widely used correlation statistic is Pearson correlation.
+
+   Sometimes, the TFIDF or Bag-of-Words representation is too big and doesn't fit in memory. In
+   this cases, we can reduce its dimensionality using *Principal Component Analysis (PCA)* method.
+
+   When deciding on a unsupervised model, if we have a predefined number of clusters in mind, we
+   go for k-means, otherwise, we opt for hierarchical clustering.
+
+   When deciding on a supervised model, if the outcome is continuous and numeric, we use
+   regression. If it is discrete or categorical, we use classification.
+
+   When we need a simple classification model, Naive Bayes algorithm is a good choice.
+
+   When we need to achieve higher accuracy, more complex tree-based methods such as decision trees
+   and random forests are good options.
+
+   When we want the probability of the occurrence, we use logistic regression.
+
+   Once a model is ready, it is necessary to evaluate its performance using methods like:
+   - *confusion matrix*: a crosstab between actual and predicted values.
+   - *accuracy*: ratio of correctly classified instances to the total number of instances.
+   - *precision and recall*: evaluates the relevancy of the result items and expected items.
+   - *F1 Score*: the harmonic mean of precision and recall.
+   - *Receiver Operating Characteristic (ROC) Curve*: a chart based on *True Positive Rate (TPR)*
+     and *False Positive Rate (FPR)*.
+   - *Root Mean Square Error (RMSE)*:  mainly used for evaluating regression models.
+   - *Maximum Absolute Percentage Error (MAPE)*: another way to evaluate a regression models*.
+
+   The *pickle* lib makes use of binary protocols to save and load Python objects.
+
+   *joblib* provide efficient ways to save large Python objects (using *pickle*).
 
 ** Links / references
 
